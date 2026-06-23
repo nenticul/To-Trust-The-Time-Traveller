@@ -1,0 +1,4 @@
+pair,CVI,public_agree,expert_agree,gap
+AI -> unemployment,11,0.7667982456819673,0.3125,0.4542982456819673
+Trade -> job loss,12,0.3552275296954728,0,0.3552275296954728
+Immigration -> job loss,6,0.42273444532795373,NA,NA

@@ -1,0 +1,893 @@
+---
+title: "To Trust the Time Traveller"
+subtitle: "Expert consensus, partisan identity, and the capture of economic facts citizens cannot check"
+shorttitle: "Trusting the Time Traveller"
+author:
+  - name: "Anes Tamtam"
+    affiliations:
+      - name: "University College Dublin"
+    email: "anes.tamtam@ucdconnect.ie"
+date: today
+abstract: |
+  How do you convince someone of a claim they cannot check? Many economic questions that
+  decide elections — whether immigrants take jobs, whether automation will destroy them —
+  have answers distant in time, diffuse in cause, and unobservable from ordinary life. Like
+  the listener to a time traveller, the citizen cannot test them and falls back on a prior;
+  which prior fills the vacuum turns on whether elites have made the issue partisan. Holding a
+  survey item fixed and measuring tribalization independently from a century of congressional
+  speech, we find the Republican–Democrat gap on whether immigrants take jobs widening from
+  zero in 1996 to thirty-three points in 2024 — on net chiefly through the out-group
+  converging on the experts, though Republican belief rebounds in the final wave — until the
+  fact sorts nearly as hard by party as the policy preference beside it. The sorting is sharpest among the most knowledgeable — the reverse of an
+  information deficit, and consistent with asymmetric motivated reasoning — and the same pattern
+  reappears on a fact from outside economics entirely, disbelief that humans evolved. Following the
+  same people across a 2011–2020 panel shows the capture happening within individuals: a
+  respondent's party before the issue tribalized predicts the broad immigration-impact belief they
+  later adopt more strongly than their early belief predicts their later party. Facts, not
+  only preferences, are captured by party as an issue tribalizes, and on contested claims more
+  information sharpens the divide rather
+  than closing it.
+keywords:
+  - partisan sorting
+  - expert consensus
+  - motivated reasoning
+  - folk economics
+  - issue evolution
+bibliography: references.bib
+csl: apa.csl
+nocite: |
+  @*
+link-citations: true
+number-sections: true
+format:
+  pdf:
+    toc: true
+    toc-depth: 2
+    papersize: letter
+    geometry: margin=1in
+    fig-pos: "H"
+    keep-tex: true
+# For full APA-7 journal formatting, optionally install the apaquarto extension
+# (`quarto add wjschne/apaquarto`) and change the format above to `apaquarto-pdf`.
+---
+
+```{r}
+#| label: setup
+#| include: false
+library(tidyverse)
+library(knitr)
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE,
+                      fig.width = 7, fig.height = 4.2, fig.align = "center")
+theme_set(theme_minimal(base_size = 11))
+# Paths relative to this .qmd (in paper/). Figures render live from the processed data.
+proc <- "../data/processed"
+rd <- function(f) readr::read_csv(file.path(proc, f), show_col_types = FALSE)
+```
+
+# Introduction
+
+Imagine a stranger claims to be a time traveller. You cannot inspect the future they describe, and no evidence you could gather would settle the matter; whether you believe them turns not on the content of their report but on who they are and whether you trust their kind. A surprising amount of what citizens are asked to believe about the economy has this structure. Will artificial intelligence raise unemployment? Did a protectionist trade agenda help the middle class? Do immigrants take jobs from the native-born? These are truth-apt claims — they have answers — but answers the ordinary citizen cannot verify, because the relevant counterfactual is unobservable, the causes are diffuse, and the verdict arrives, if at all, only after years [@popper2002logic]. On such claims the citizen, like the listener to the time traveller, falls back on a prior.
+
+This matters for democratic competence because economic policy is decided in part by what publics believe about consequences they cannot observe. If those beliefs track evidence, even imperfectly, deliberation can discipline policy. If instead they track identity, then on exactly the high-stakes claims experts are surest of, public belief becomes a mirror of partisan conflict rather than a check on it. We show that the latter is increasingly the case, and — most consequentially — that it is *most* true of the citizens best equipped to know better. That last fact inverts the remedy a democracy instinctively reaches for. If the obstacle were ignorance, more information would be the cure; we find that on a captured fact more information instead widens the partisan divide — correcting the out-group while leaving the in-group in place — so education, expertise, and deliberation deepen the very division they are meant to dissolve. The standard tools of democratic correction do not fail neutrally here; on a fact that cannot be checked, they sharpen the split they are meant to close.
+
+The paper argues that economic belief under unverifiability runs in two regimes. Where an issue is not politically contested, the fallback is folk-economic intuition, a shared anti-market bias that more education corrects [@caplan2007myth; @boyer2018folk]. Where an issue is contested, the fallback is partisan identity, and the belief sorts by party. Our central empirical contribution is to watch a single belief cross from the first regime to the second, holding its survey wording fixed and measuring the issue's tribalization from elite behavior — a century of congressional speech — independently of the mass belief it is meant to explain.
+
+The anchor is the disagreement between the American public and professional economists, which is largest precisely on the claims economists are surest of [@sapienza2013economic; @johnston2016economists; @gordon2013views]. On unverifiable, high-salience claims that gap is enormous (@tbl-gaps) — but it is not uniform ignorance. It is *sorted*, and it sorts asymmetrically: as an issue tribalizes, the party for whom the expert position is congenial converges on the experts while the other does not (@fig-partisanization).
+
+Three findings make this more than a redescription of polarization. First, a factual belief comes to sort like a preference: the partisan gap on "immigrants take jobs" rises from roughly nine percent of the gap on the matched immigration-policy preference in 2004 to roughly seventy-two percent by 2024 (@fig-convergence) — a truth-apt claim migrating into the partisan structure a taste already had, until by 2024 it divides the parties as sharply as gun control or the death penalty (@fig-benchmark). Second, the sorting is concentrated among the *most sophisticated*: in a second survey with a behavioral knowledge measure, the partisan gap on the belief *widens* with political knowledge (@fig-anes), the opposite of an information-deficit prediction and consistent with asymmetric motivated reasoning [@kahan2012polarizing; @taber2006motivated]. The amplification is asymmetric — it is the out-group, the better-informed Democrats, who move toward the experts, while informed Republicans hold the folk line — and it is *political knowledge*, not general education, that produces it. We read this as consistent with party-line enactment rather than truth-tracking, since knowledge moves only the side whose pole departs from the folk default; but we are explicit (§5, §7) that the observational design narrows without identifying the cognitive account against selective exposure, and we leave that identification to a pre-registered experiment. Third, the belief carries weight beyond the survey item: it predicts presidential vote and border-wall support net of party, ideology, and knowledge (@tbl-behavior) — suggestive against a purely expressive reading, though, because vote reports can themselves be expressive, only the pre-registered experiment (Appendix E) can fully settle sincerity.
+
+Our contribution is theoretical as much as empirical. Issue evolution [@carmines1989issue] established that elite conflict reorganizes mass *preferences*, and we find its central dynamic at work — elite polarization preceded the public's by roughly a decade (a temporal ordering we read as suggestive rather than decisive given the short series, and estimated on the immigration *preference*, which alone has the waves to support a lead–lag; @fig-precedence). Issue evolution is silent on two things this paper documents: that truth-apt *facts*, not only preferences, take on a tribalized issue's partisan structure, and that the sorting is *steepest among the sophisticated*. The Time-Traveller's Problem supplies both. When evidence cannot bind, the citizens best able to evaluate a claim are the ones who sort most — capacity applied to enact the party line, not to weigh the evidence toward the truth.
+
+The scope is defined by a claim's *structure*, not its subject — truth-apt, low in verifiability, contested by elites — with economic beliefs our primary and cleanest case. That the mechanism turns on structure rather than content is not merely asserted: we confirm it travels, reproducing the same asymmetric, sophistication-amplified capture on a fact from outside economics altogether, disbelief in evolution (§7), so the immigration result is an instance of a general phenomenon rather than a fact about one issue. Within the scope the theory also makes a forward prediction the data have not yet tested: AI-and-employment beliefs, currently weakly sorted, will partisanize as the issue tribalizes. The paper develops the two-regime model (§3), the design (§4–5), the evidence (§6), and the mechanism and its generalization (§7), before turning to what it means for whether citizens can be convinced of things they cannot check (§8).
+
+# Related literature
+
+The puzzle this paper addresses — why citizens come to hold party-sorted beliefs about economic *facts* they cannot check, and why the sorting is sharpest among the best-informed — sits at the intersection of five literatures, each of which owns a piece of it and none of which assembles the whole. We organize the review around what each establishes and the question it leaves open; the unfilled conjunction of the five is the paper's address.
+
+## Public–expert economic disagreement
+
+That ordinary Americans diverge sharply from economists is well documented [@sapienza2013economic; @johnston2016economists; @gordon2013views], as is the structure of agreement within the profession that makes the expert benchmark meaningful [@vangunten2016consensus]. This literature establishes that the gap exists and is largest where economists are most united. It does not ask how the gap's *partisan* structure changes over time on a claim of fixed wording — which is where a descriptive regularity becomes a dynamic one.
+
+## Folk economics
+
+Caplan's account of systematically biased economic beliefs [@caplan2002systematically; @caplan2007myth] and the evolutionary-cognitive model of folk-economic intuition [@boyer2018folk] explain why the public errs in a shared, anti-market direction. They own the claim that the bias is general; they do not explain why, on some claims, the same bias *sorts by party* — why it is shared on automation but partisan on immigration. The two-regime model supplies the missing moderator: tribalization.
+
+## Partisan sorting and issue evolution
+
+Issue evolution [@carmines1989issue], the partisan sort [@levendusky2009partisan], and conflict extension [@layman2002party] describe how elite conflict reorganizes mass *preferences*. This is the paper's closest relative, and we concede the lineage without reservation: our precedence result — elites polarized before the public sorted — is an instance of the dynamic this literature established, framed as confirmation rather than discovery. The seam is twofold. Preferences carry no truth value, so their sorting raises no question of accuracy; the sorting of a *fact*, against a verifiable expert benchmark, does. And issue evolution is silent on sophistication, which here is not a side condition but the mechanism's signature. We show the same machinery operating on truth-apt beliefs, moderated by a variable the theory of preference sorting never needed and bearing a normative weight that preference sorting never carried.
+
+## Party cues and motivated reasoning
+
+That party shapes belief is established [@cohen2003party; @lenz2012follow; @barber2019party], and motivated reasoning supplies our mechanism: where evidence cannot bind, reasoning serves the group [@kahan2013ideology; @kahan2012polarizing]. That partisans interpret even shared facts differently [@gaines2007same], and that getting the facts right can itself fuel divergent partisan attribution [@bisgaard2019getting], establishes that facts — not only preferences — are already known to bend to party; our contribution is not that this happens but that it can be watched happening, on a fixed-wording claim against an expert benchmark, as an issue tribalizes. Two prior findings bound our mechanism claim and we treat them as such. First, that partisan factual gaps are *largest among the most knowledgeable* is not new: Jerit and Barabas document it and tie it to the information environment [@jerit2012partisan], anticipating both our sophistication result and the divergent-diets reading we must guard against — so on this front we offer confirmation and extension (a fixed-wording fact, two decades, an expert benchmark, and the asymmetry), not discovery. Second, a live debate concerns whether partisan factual gaps are *sincere* belief or *expressive* report, since accuracy incentives shrink them [@bullock2015partisan; @prior2015serious]. We press on both questions without claiming to close either: the sorting *intensifies with sophistication* (the signature of motivated reasoning, though not, by itself, distinguishable from party-correlated exposure), and the belief predicts behavior net of party (against a purely expressive reading, though a vote report is itself expressible). The contribution is to carry this mechanism into *economic facts under unverifiability*, to track a single one across its capture, and to discipline the reading against the accounts that would otherwise explain the same sorting away.
+
+## Belief revision toward experts
+
+Work on how mechanism-explanation moves people toward expert opinion [@meyers2020inducing; @meyers2023broad] and on how citizens reason about economic policy [@stantcheva2021understanding] frames the paper's normative payoff. It tells us what moves belief in the folk regime — explanation — and, by its silence on contested claims, sets up the question of what, if anything, moves belief once a fact has been captured by identity.
+
+## The seam
+
+The contribution's address is the conjunction these five leave empty: truth-apt economic beliefs, under unverifiability, sorting by party as a preference does, and accelerated by the very capacity that ought to correct them. Filling it also reconciles two findings usually held in tension. Converse's founding null held that mass publics lack the ideological constraint to organize their beliefs from within [@converse1964nature]; the motivated-reasoning tradition holds that the *sophisticated* are the most biased, not the least [@kahan2013ideology; @taber2006motivated]. The two sit uneasily together — one absolves the ordinary citizen, the other indicts the discipline's ablest — and they are usually invoked against each other. The two-regime account dissolves the tension rather than choosing a side. On a captured fact, constraint is real but it is not self-generated: it is imposed from above, by elite conflict, and it binds most tightly on the citizens best able to receive the elite signal and enact it. The public is innocent of constraint in Converse's sense and captured in Kahan's at the same time, and it is one feature of these beliefs — that they cannot be checked — that makes both true at once. What organizes such a belief is not constraint from the citizen's own reasoning but capture from the elite conflict above.
+
+# Theory: belief under unverifiability
+
+Consider a citizen evaluating a truth-apt economic claim $C$ with verifiability $v \in [0,1]$, where $v$ indexes how readily the claim's truth could be checked from ordinary experience — high when the relevant outcome is observable, near-term, and singly caused; low when the lag is long, the counterfactual unobservable, and the causes diffuse. Stated belief is a convex combination of available evidence and a prior, with the weight on evidence increasing in verifiability: $$ b \;=\; w(v)\,\mathbb{E}[\text{evidence}] \;+\; \bigl(1 - w(v)\bigr)\,\text{prior}, \qquad w'(v) > 0,\; w(0)=0. $$ The substantive content is the corner: as $v \to 0$ the evidence term vanishes and belief equals the prior — the time-traveller's predicament made formal, in which what one believes is settled not by the report's content but by whose report it is. Beyond this corner the model turns on one question — *which* prior fills the vacuum.
+
+This convex-combination form is not an assumption but a consequence of what the citizen is taken to be doing. Suppose stated belief $b$ is chosen to minimize a loss that trades off *accuracy* against *identity-congruence*, $$ L(b) \;=\; \alpha\,(b - \tau)^2 \;+\; (1-\alpha)\,(b - \text{prior})^2, $$ where $\tau = \mathbb{E}[\text{evidence}]$ is the accuracy target and $\alpha \in [0,1]$ is the weight the citizen places on being right rather than loyal. The first-order condition returns $b^* = \alpha\,\tau + (1-\alpha)\,\text{prior}$ — precisely the expression above, with $w(v) \equiv \alpha(v)$. Let the accuracy weight rise in verifiability, $\alpha'(v) > 0,\ \alpha(0)=0$: when a claim cannot be checked the evidence signal is uninformative, the citizen places no weight on accuracy, and belief collapses onto the prior. The corner is thus derived, not posited, and everything that follows is a consequence of how the prior is formed rather than a separate stipulation.
+
+The prior is not a single object but a regime-switching mixture of two dispositions. Let $f$ be the **folk-economic prior** — the shared, anti-market intuition that schooling corrects regardless of party [@caplan2007myth; @boyer2018folk] — and $p$ the **identity prior**, the position of one's party. The mixing weight is the issue's **tribalization** $T$, the degree to which elite partisan conflict has organized it: $$ \text{prior} \;=\; \bigl(1 - g(T)\bigr)\,f \;+\; g(T)\,p, \qquad g'(T) > 0,\; g(0) = 0. $$ At low $T$ the citizen falls back on folk intuition; as $T$ rises, the identity prior progressively displaces it. The substitution of $p$ for $f$ as $T$ rises on a claim of fixed wording is the paper's central dynamic.
+
+One further feature gives the model its empirical teeth. The fidelity with which a citizen enacts the identity prior — how closely stated belief tracks the in-party line and resists the out-party's — is increasing in political sophistication $s$, because cognitive capacity is precisely what lets a person recognize the party's position and marshal arguments for it where the evidence cannot settle the matter [@kahan2013ideology; @kahan2012polarizing]. Writing the identity term as $p(s)$ with $\partial p / \partial s > 0$, and noting that the folk term $f$ is *corrected* rather than amplified by capacity, the model implies that sophistication plays opposite roles in the two regimes: it *amplifies* the partisan structure of a contested fact where $T$ is high, and *attenuates* folk error where $T$ is low. This single asymmetry — capacity defending identity where it is engaged, correcting folk intuition where it is not — generates both the paper's central mechanism result and its falsification test, and it is what no rival account produces. A further implication concerns *which* party moves. Because the identity prior enters as $p(s)$, sophistication amplifies a partisan's movement toward their own pole; but where that pole already coincides with the folk default $f$ — as it does for the party whose line happens to run with folk intuition — capacity has nothing to add, and the visible amplification is borne entirely by the *out*-party, which converges on the experts as $s$ rises. The mechanism is therefore predicted to be *asymmetric across parties*, not the symmetric sharpening of classic identity-protective cognition [@kahan2012polarizing; @kahan2013ideology] — a distinction the data adjudicate in §7. Which party plays which role is not free-floating: the model anchors the party whose pole coincides with the folk default $f$, and for immigration that default is fixed independently of the parties — folk-economic theory marks anti-foreign, anti-immigration intuition as a shared, pre-political bias [@caplan2007myth; @boyer2018folk], so it is the Republican pole, not by stipulation from the party's platform, that the model places at $f$, predicting *ex ante* that Republicans anchor and Democrats converge. We are candid about the limit of this move: on an issue whose folk default is not independently known, the model rationalizes the direction of the asymmetry after the fact rather than predicting it, and pinning $f$ down from theory or prior evidence is a precondition for the directional claim to have content. We are equally candid about what the formalism adds and what it does not. The convex-combination belief and its loss-function derivation are standard, and several of the comparative statics restate verbal intuitions in symbols; the formalism's marginal contribution is narrower and specific — it makes the three channels ($\alpha$, $g$, $s$) *separable and multiplicative* in one gap equation, and it converts the empirical asymmetry from a description into a *derived* prediction, but only conditional on the anchoring $p_R \approx f$. The separability is not merely notational: it implies that the partisan gap and the sophistication premium on the same fact should be the *same object scaled* — both proportional to $g(T)$ — and §7 shows them rising together from zero as the issue tribalizes, the signature a non-multiplicative account would not produce. That anchoring does real work, and whether anti-immigration sentiment is genuinely pre-political folk economics — rather than, say, a more recent product of elite cue-giving — is itself contestable. Here, though, the data pin $f$ better than theory alone could. Through 2004 the belief carried no partisan signal: Republicans and Democrats held it at the same rate (immjobs at 46 and 49 percent in 1996, 42 and 41 in 2004; the differently framed `immameco` likewise bipartisan). The folk default *was* a shared, pre-cleavage baseline near a coin flip, not a Republican possession — and as the cleavage opened, Republicans stayed at that baseline (45 percent in 2024) while Democrats left it. The anchoring $p_R \approx f$ is thus not assumed but observed: $f$ is the bipartisan level that predates the elite immigration cleavage, and the in-party is the one that *stayed* at it. This empirical pinning is specific to immigration; on an issue lacking such a documented pre-cleavage baseline, the directional claim would again be assumption rather than finding — which is the honest boundary of the model's one derived prediction. Two claims must be held apart even here: that the pre-cleavage baseline is bipartisan, which the data show, and that this baseline is *folk-economic* rather than merely historically contingent, which we take from folk-economic theory [@caplan2007myth; @boyer2018folk] rather than demonstrate — and identifying the anchor as "whichever party stayed put" risks circularity if left there. The fully non-circular test is a fact whose folk default is the *other* party's congenial position — a market claim on which folk intuition runs anti-market and Democratic-congenial, such as the employment effect of the minimum wage or rent control — where the structural model predicts that *Republicans* become the converging out-group and Democrats anchor. We flag this content-neutrality test as the single most valuable extension and return to it in the limitations.
+
+These features combine into a single expression for the partisan gap, from which the comparative statics read off directly rather than being asserted alongside the model. For a citizen of party $j \in \{R, D\}$, substituting the prior into $b^* = \alpha(v)\,\tau + (1-\alpha(v))\,\text{prior}$ gives $$ b^*_j \;=\; \alpha(v)\,\tau \;+\; \bigl(1-\alpha(v)\bigr)\bigl[(1-g(T))\,f(s) + g(T)\,p_j(s)\bigr], $$ where $f(s)$ is the folk prior that schooling moves toward the expert target ($\partial\,|f(s)-\tau|/\partial s < 0$) and $p_j(s)$ the party pole that sophistication sharpens. An individual's divergence from the experts is $b^*_j - \tau = (1-\alpha(v))[(1-g(T))(f(s)-\tau) + g(T)(p_j(s)-\tau)]$; the *partisan gap* — the difference across parties, and the paper's object — is cleaner still, because the shared folk term cancels: $$ \text{Gap}(s) \;=\; b^*_R - b^*_D \;=\; \bigl(1-\alpha(v)\bigr)\,g(T)\,\bigl(p_R(s) - p_D(s)\bigr). $$ The whole theory sits in the three factors. The $\alpha(v)$ factor delivers **P1** (and, looking ahead, the verifiability half-life held apart below): belief detaches from $\tau$ as $v \to 0$, and both individual divergence and the partisan gap shrink as verifiability — hence $\alpha$ — rises. The $g(T)$ factor delivers **P2–P4**: at $T \to 0$ the gap vanishes and only the education-corrigible folk term $f(s)$ survives, so divergence is universal and party-free; as $T$ rises the gap grows and the fact takes on the partisan loading that a preference under the same $g(T)$ already carries. The $s$ factor delivers **P5**: $\partial\,\text{Gap}/\partial s = (1-\alpha)\,g(T)\,\partial(p_R - p_D)/\partial s$, strictly positive where $T$ is high and identically zero where $T \to 0$ — sophistication widens the gap *only* in the identity regime. The §7 asymmetry is the special case $p_R(s) \approx f(s)$: when the in-party pole coincides with the folk default, only $p_D(s)$ travels toward $\tau$ as $s$ rises, so the widening is borne by the out-party alone. The structure thus yields five comparative statics — each a consequence of this one equation — and one forward-looking implication held apart below.
+
+**P1 (the gap).** As $v \to 0$, belief detaches from evidence, producing large public–expert gaps on unverifiable claims (@tbl-gaps). **P2 (folk regime).** Where $T$ is low, divergence from the experts is universal and education-corrigible, and party is irrelevant (@tbl-micro). **P3 (identity regime).** Where $T$ is high, party predicts divergence and the out-group converges on the experts (@tbl-gradient, @fig-partisanization). **P4 (capture).** As $T$ rises on a fixed claim, the fact acquires partisan loading and comes to sort like the matched preference (@fig-convergence). **P5 (mechanism, conditional).** Where $T$ is high, the partisan gap on the fact *widens* with sophistication; where $T$ is low it does not. The conditional form — positive where $T$ is high, non-positive where $T$ is low (the model predicts zero, and the folk term turns it mildly negative wherever schooling is still actively correcting the folk error) — is the model's falsification test (@tbl-anes, @tbl-falsification).
+
+These five are the comparative statics the data test. The model carries one further implication that current data cannot identify, and we hold it apart from the numbered predictions for exactly that reason: a **verifiability half-life** — as $v$ rises on a fixed claim, the partisan gap should shrink. It is untestable here for want of within-claim variation in $v$, and we therefore present it not as a headline prediction but as a forward-looking implication, registered as a prospective test (H4) in the AI study, where the technology's deployment makes the same claim progressively checkable (§8; `preregistration.md`).
+
+Prediction P5 discriminates the model from the simplest rivals, though not from all, and it is worth being exact about which. Several accounts could generate party-sorted economic beliefs: an **information deficit** (the less informed adopt their side's line), **Bayesian updating** on the evidence, and **expressive responding** (insincere partisan cheerleading). The role of sophistication separates some of these cleanly. An information-deficit account predicts the gap should *shrink* as people learn; a *naïve* Bayesian account, in which partisans process common evidence, predicts convergence as information accumulates; a gap that *widens* with knowledge contradicts both. That widening is the signature the motivated-reasoning tradition predicts — capacity recruited to enact the party line where evidence cannot bind [@kahan2013ideology; @taber2006motivated] — and §7 finds it, across surveys and at the scale of the CES. We are careful, however, about what the test does not do. It does not separate motivated reasoning from a *divergent-information-environments* account: if the expert signal is concentrated in the Democratic information diet and the folk-congruent signal in the Republican one, more information carries informed Democrats toward the experts while leaving informed Republicans in place, reproducing both the widening and its asymmetry through party-correlated *exposure* rather than identity-protective *cognition* [@jerit2012partisan]. The two are observationally close under any cross-sectional design, and a generic civics battery indexes accumulated exposure as readily as reasoning capacity. We therefore read the widening as *consistent with* asymmetric motivated reasoning and as decisive against the information-deficit and naïve-Bayesian accounts. We do not, however, leave the cognition-versus-exposure question wholly to the experiment. Two observational steps narrow it (§7, Appendix B). First, the party-by-knowledge interaction on the fact survives controlling for party-by-political-attention — the readiest proxy for differential exposure — falling only from +0.51 to +0.40, so the amplification is not reducible to who attends to more of their own side's information. Second, political knowledge moves only the *out-group* toward the experts: informed Republicans, for whom the party line coincides with the folk default, do not budge, whereas a truth-tracker would move both sides. The movement is enactment of a party pole that happens to sit at the expert position, not reasoning toward the truth. What is left for the pre-registered experiment (Appendix E) is the clean and complete isolation of cognition from exposure; what §7 already establishes robustly is the comparative static itself, that on a captured fact the partisan division *grows* with sophistication — the reverse of the civic-education premise.
+
+The model's relationship to issue evolution is now exact. Issue evolution [@carmines1989issue] is the operation of $g(T)$ on *preferences*; we show the same $g(T)$ operating on truth-apt *facts*, and we add the sophistication term $p(s)$ that the theory of preference sorting never required and that distinguishes capture from a knowledge deficit. The scope is then a boundary, not a hedge. The theory concerns truth-apt, low-$v$, high-$T$ economic claims. It is silent on verifiable facts (where $w(v) \to 1$ and evidence binds), on pure preferences (which carry no truth value to be captured), and on uncontested claims (where $f$, not $p$, governs). Within its scope it is generative: it predicts which facts are *capturable* — the unverifiable and the tribalizing — and names the next, AI-and-employment, as that issue rises on $T$.
+
+# Data
+
+The argument requires three ingredients: an expert benchmark, public belief on matched claims measured repeatedly over time, and a measure of tribalization that is not itself a function of public opinion.
+
+## Expert benchmark (IGM / Clark Center)
+
+The Kent A. Clark Center US Economic Experts Panel surveys leading economists, by name, on precisely worded claims [@igm_eep]. We reshape these into one record per economist per sub-question — 753 records across seventeen claims (`R/01`) — and collapse the five-point Likert responses to agree / not-agree, both to match the coarser public items and because the sign of expert consensus, not its intensity, is what the public-expert comparison requires.
+
+## Public microdata (GSS, Pew ATP, ANES)
+
+Public belief comes from the General Social Survey 1972–2024 cumulative file [@gss_2024], which fields the immigration items repeatedly — anchoring the over-time analysis — and also carries the science-module item on human evolution used in the generality test (§7); the Pew American Trends Panel waves on automation (2017) and artificial intelligence (2024) [@pew_atp], which supply the low-tribalization comparison cases; and the 2024 American National Election Studies [@anes_2024], which adds a behavioral political-knowledge battery and consequential outcomes for the mechanism and behavior tests. A high-powered robustness check on the mechanism draws on the Cooperative Election Study (2022 and 2024, roughly 60,000 respondents each) [@ces_2024] (Appendix B). The individual-level dynamic that repeated cross-sections cannot show is established on the Views of the Electorate Research (VOTER) panel [@voter2020], which re-interviewed the same national sample across 2011–2020 and carried a fixed immigration-impact belief item before and after the issue tribalized (§6, @sec-panel). Full variable coding and the verbatim matched-pair wordings are in Appendix D.
+
+```{r}
+#| label: tbl-descriptives
+#| tbl-cap: "Analytic samples: size and composition by survey (weighted shares; % Republican among party identifiers, % college = bachelor's or higher)."
+rd("descriptives.csv") |>
+  kable(col.names = c("Survey", "Years", "N", "% Republican", "% college"))
+```
+
+## Elite tribalization measure
+
+Tribalization is measured outside the survey, from the Card et al. corpus of 140 years of congressional immigration speech [@card2022immigration; @card2022data]. We take the Democrat–Republican gap in pro-immigration tone by year, smoothed, as the elite-polarization series. Because the measure derives from elite behavior rather than mass attitudes, it lets us treat the issue's tribalization as predetermined relative to — not a mechanical echo of — the public belief whose sorting we study, and to test whether elite polarization *precedes* mass sorting (@fig-precedence).
+
+## Matched pairs and the Claim Verifiability Index
+
+Each folk claim is paired with the experts' verdict on the same causal question, framed so that public and expert agreement point the same way; the verbatim wordings appear in Appendix D. We are candid that the pairs are *conceptual* matches rather than identical items — the AI pair is the closest, and its expert base is thin (sixteen substantive responses) — and we therefore place the inferential weight not on the public-expert gap itself but on the individual-level and over-time analyses of the public items.
+
+For the immigration claim — the paper's centerpiece — the benchmark warrants its own justification, since no IGM poll asks the verbatim question, and we therefore report *no* expert point estimate for it (the inverted green-card figure carried in an earlier draft has been removed as a non-sequitur; §6). We anchor the *direction* not in any single poll item but in the professional consensus as a whole: the National Academies' comprehensive review concludes that immigration has little to no effect on the aggregate employment or wages of native-born workers over the long run [@nas2017immigration], a verdict echoed across expert surveys. We are deliberate about scope. The consensus is firm on the *aggregate* claim the public item expresses — that immigrants, on net, take jobs from the native-born — but genuinely weaker on *distributional* effects, where a long-running debate concerns whether less-skilled immigration depresses the wages of the most exposed native workers in particular local labor markets [@borjas2003labor; @card2005immigration]. Our benchmark is the aggregate verdict, which is where the public item sits and where agreement is strongest. Crucially, nothing in the argument requires the expert position to be the final truth: the benchmark fixes the *direction* of movement — who moved toward whom — which is what makes the asymmetry interpretable. The phenomenon of a truth-apt claim acquiring partisan structure, asymmetrically and with sophistication, would stand even for a reader who regarded the claim as contested rather than settled.
+
+There remains a respondent-side version of the worry: a person affirming "immigrants take jobs" might have in mind the contested *distributional* claim rather than the aggregate one. We confront this directly rather than leaving it to a caveat. The GSS also fields an item that is unambiguously aggregate — whether immigrants are, on balance, good for the national economy — on which professional consensus is firm. It partisanizes on the identical trajectory, by the same one-sided movement, the two partisan-gap series correlating at *r* = .95 across their common years (@fig-wording). Because the aggregate-framed item shows the very same capture, the result is not an artifact of respondents reading a distributional claim on which experts are divided; the partisanization attaches to the aggregate economic belief about immigration, which is where the expert benchmark is solid.
+
+The Claim Verifiability Index (Appendix A) scores each claim on four dimensions of how hard it is to check; it certifies that the studied claims are genuinely unverifiable and is not used as a regressor.
+
+## Data availability and ethics
+
+No restricted microdata are redistributed. The committed aggregates from which this manuscript renders are non-identifiable year- and group-level summaries; each survey is analyzed with its own native weights, and no weight is pooled across surveys. Acquisition paths and the full pipeline are documented in `data/README.md` and Appendix C.
+
+# Methods and identification
+
+Our estimand is not a treatment effect but a *structural change*: how the partisan organization of a fixed, truth-apt belief evolves as the issue around it tribalizes. The identification problem is correspondingly distinctive, because tribalization cannot be randomized. In its place we exploit three features of the data — a survey item of constant wording, a measure of tribalization derived from elite behavior rather than from mass attitudes, and repeated cross-sections spanning the issue's politicization — to strip out the confounds a cross-issue comparison cannot, and to discipline, though not fully eliminate, the rest. This section states the design, the estimation and inference rules, the test that discriminates our mechanism from its rivals, and the threats that the design cannot dispatch and that we therefore confront directly.
+
+## The within-item, across-era design
+
+The core design holds a single survey item's wording fixed and treats the change in its partisan structure across eras as the object of study, with tribalization measured outside the survey. The logic is subtractive: because the words are constant, item-wording confounds that bedevil cross-issue comparison are differenced away. If the same question sorts respondents by party in 2024 but not in 2004, neither the question nor any stable feature of the respondents can be the explanation; what changed is something time-varying. The within-item design establishes *that* the belief partisanized; attributing the change specifically to the issue's place in elite conflict — rather than to some coincident trend — rests on the externally measured tribalization series, the cross-claim gradient, and the precedence analysis, not on the within-item comparison alone. The gradient across claims (§6) and the trajectory within a claim (§6) are the cross-sectional and longitudinal faces of the same design.
+
+The design's force depends on tribalization being measured *independently* of the belief whose sorting it is meant to explain. We take it from the Democrat–Republican gap in the tone of congressional immigration speech over more than a century [@card2022immigration] — a quantity generated by elite political behavior, not by mass attitudes, and so not mechanically downstream of the public belief. We do not claim this discourse is causally exogenous in the strict sense; elites surely anticipate voters, and elite and mass polarization co-evolve. The weaker and sufficient claim is that the measure is *predetermined* relative to, and not a mechanical echo of, the specific factual belief whose sorting we study — and the precedence analysis below confronts the direction of influence head-on rather than assuming it. Text-as-data methods make such elite-discourse measures tractable and replicable, and place this paper in a now-standard tradition of measuring partisan structure from political text [@gentzkow2019measuring]. Treating tribalization as predetermined rather than as a mechanical echo of mass opinion lets us go further than association: the precedence analysis below asks whether elite polarization *precedes* mass sorting, the temporal signature one expects if elites drive the process and the reverse of what a purely bottom-up account would predict.
+
+## Estimation
+
+All estimates use survey-weighted logistic regression with design-based standard errors [@lumley2004analysis]. Each survey is analyzed with its own native weights and design, and no weight is pooled across surveys — the answer to the worry that stitching pollsters together distorts the trend. The precedence analysis uses lead–lag correlations and a Granger-style regression of the public partisan gap on lagged elite polarization, net of the public gap's own lag. Because any single model invites the suspicion of specification search, the paper's central interaction is reported not for a preferred specification but across the full set of defensible analytic choices — a specification-curve, or multiverse, analysis [@simonsohn2020specification; @steegen2016multiverse] — so that the reader sees the distribution of estimates rather than our pick from it (Appendix B).
+
+## Inference discipline
+
+We adopt one rule and state it plainly, because it governs how every over-time claim is reported. For a claim about change *over time*, the relevant unit of replication is the survey-year, not the individual respondent. It follows that the paper's inferential weight does *not* rest on the immjobs trend across five survey-years alone. That trend is real — each year's partisan gap is precisely estimated, the 1996 and 2004 gaps straddling zero and every gap from 2014 onward significantly positive (@fig-gap-trend) — and across the five survey-years it is *r* = .92, *p* = .03. We do not rest the claim on a single item's wording, either. A second, differently framed economic fact — whether immigrants are good for the economy (`immameco`) — partisanizes in lockstep with immjobs, its partisan-gap series tracking the first at *r* = .95 across the common years and trending the same way (@fig-wording). We are deliberate about what this does and does not buy. It is *wording robustness*, not added statistical power: because the two items are near-collinear framings of one underlying belief (their gap series correlate at .95), they carry barely more independent information than immjobs alone, and we therefore do *not* pool them into a nine-point regression and report its standard error as if the nine observations were independent — that would be pseudo-replication, manufacturing precision the data do not contain. What the second framing establishes is that the over-time partisanization is not an artifact of one item's particular phrasing, which the near-perfect concordance secures on its own; the trend's honest inferential weight remains the five-year, *p* = .03 test above. The backbone is sturdier still: the cross-sectional gradient across three issues (§6, with the survey-and-era caveat there) and the cross-survey replication of the mechanism in the ANES (§7) corroborate the pattern at far larger samples, though — we are candid — each tests the spatial or knowledge gradient rather than the over-time crossing itself. The novel claim is the *joint* structure: a fixed-wording fact crossing from non-partisan to partisan, asymmetrically, and converging on the partisanship of the matched preference. No one piece carries it; together they do. A naïve individual-level *p*-value of order $10^{-26}$ — which one obtains by treating 6,457 respondents as independent draws across five survey-years — is not the basis of any claim in the paper. Stating all of this is, we think, a credibility asset rather than a concession: it is the discipline a skeptical reader would otherwise have to impose.
+
+## The discriminating test of the mechanism
+
+Sorting alone does not identify *why* it occurs. Three accounts each predict party-sorted factual beliefs: an information deficit, in which the less informed adopt their side's line; Bayesian updating on party-correlated information environments; and expressive responding, in which partisans report what flatters their side without holding it. Description cannot separate them, so we design a test on the one observable where they diverge — the role of political sophistication. Motivated reasoning holds that, where evidence cannot bind, cognitive capacity is recruited to enact the party's position rather than to track the truth, so the partisan gap on a contested fact should *intensify* with sophistication; an information-deficit account predicts the gap should *attenuate* as people learn, and a *naïve*-Bayesian account, in which both sides process common evidence, predicts convergence [@kahan2012polarizing; @taber2006motivated; @kahan2013ideology]. One rival, however, predicts the same intensification and the sophistication test cannot exclude it: *divergent information environments*, in which the more engaged of each party absorb more of their own side's party-congruent signal [@jerit2012partisan]. Exposure and cognition both yield a gap that widens with engagement — the one by what reaches a partisan, the other by what a partisan does with it — and no cross-sectional design separates them. We are therefore explicit throughout that the interaction adjudicates against the deficit and naïve-Bayesian accounts but is only *consistent with* the cognitive one; the incentivized-accuracy experiment (Appendix E) is what would isolate it. With that boundary stated, we estimate the party-by-sophistication interaction on the factual belief — using a behavioral political-knowledge battery in the ANES and education in the GSS — and, so that the test isolates sophistication rather than its correlates, re-estimate it net of party-by-education and party-by-ideology interactions (Appendix B). The two measures are not interchangeable, and the model says in advance which should carry the discriminating weight: because general education *also* corrects the folk error directly — it pulls both parties toward the experts, not just the out-group (§7) — the education-based version of the test is predicted to be the weaker and noisier one, and indeed it is positive but imprecise (@tbl-falsification). The clean magnitude test is the political-knowledge interaction, which measures enactment of the party line rather than general human capital; the education version's proper role is the conditional, sign-by-tribalization falsification, not the headline coefficient. The discriminating result is therefore knowledge-specific by design, not by luck. The model also implies a bounded form of the prediction that serves as a falsification test: the amplification should appear only where the issue is tribalized, and be absent or reversed where it is not (§7). Expressive responding, which a sophistication test cannot by itself exclude, is taken up separately below.
+
+## The composition control
+
+A natural alternative to identity sorting is composition: perhaps the across-era shift reflects the parties' changing educational make-up rather than any change in belief. We adjudicate this with a pooled model interacting both party and education with era (@tbl-diploma). The party-by-era term survives; the education-by-era term is null. The shift is sorting on identity, not the diploma divide — and, tellingly, it is non-college Democrats who moved most, the opposite of a composition story.
+
+## Threats to inference
+
+Five threats deserve direct treatment. *Reverse causation*: with repeated cross-sections we cannot say whether the fact drives the preference or the preference the fact; we therefore make no causal claim about their direction, showing only that the fact acquired partisan loading on an independent trajectory (§6). *Differential item functioning*: the phrase "immigrants take jobs" might mean different things in different eras; we mitigate this with fixed wording, by replicating the partisan pattern in a second survey (ANES `V242228`), and by showing it on a *differently worded GSS fact about the same economy* — whether immigrants are good for it (`immameco`, fielded 1996–2024) — which partisanizes on an all-but-identical trajectory, driven by the same one-sided Democratic movement (the two gap series correlate at *r* = .95; @fig-wording). *Mode and sample change*: the GSS shifted partly to web administration in 2021, but the immigration item was not fielded that year, so the 2021 transition never enters the capstone series. *Differential macroeconomic exposure*: the five fielding years span very different labor markets, and party-leaning regions need not share identical exposure to them, so a confound correlated with party and timing is conceivable; but absorbing census-region fixed effects and region-specific time trends leaves the party-by-year interaction essentially unchanged (a shift of well under one percent), and a one-sided convergence on the *expert* position is in any case the wrong signature for a local-labor-market story, which would move both parties toward their own conditions. *Knowledge coding*: the ANES battery includes a deliberate "catch" item and some respondents may look answers up — both of which work *against* finding a knowledge effect, so neither manufactures the positive interaction we report (Appendix D).
+
+## Expressive responding
+
+The gravest objection is that we measure expression, not belief: partisans may report what flatters their side without holding it. The literature is clear that this is real — monetary accuracy incentives substantially *reduce* partisan factual gaps [@bullock2015partisan; @prior2015serious] — and an observational design cannot exclude it. We offer one observational consideration and are candid about its limit. The belief predicts consequential outcomes — presidential vote and border-wall support — net of party, ideology, and knowledge (@tbl-behavior, @tbl-behavior-controls); a report that were nothing but cheerleading on a single item would have to cheer in lockstep across these as well. But this does not escape the objection, because a vote report is itself a self-report subject to the same expressive pressures: the association shows the belief travels with consequential partisan commitments, not that it is sincerely held. The decisive test is therefore experimental, and we specify a pre-registered incentivized-accuracy design (Appendix E) that would partition the gap into sincere and expressive components. We claim, then, that the belief carries real political weight, not that it is wholly sincere — a distinction the data we have can support and the data we lack cannot yet close.
+
+# Results
+
+We present the evidence in the order that builds the argument: that a gap exists (P1), that it is folk where untribalized and identity where tribalized (P2–P3), that elite polarization preceded the public's sorting, that a fact came to be captured and to sort like a preference (P4), and — in §7 — that the capture intensifies with sophistication rather than reflecting ignorance. @tbl-main summarizes the headline estimates; the full models and inference follow in this section and the appendices.
+
+```{r}
+#| label: tbl-main
+#| tbl-cap: "Summary of the main estimates."
+rd("main_estimates.csv") |> kable(col.names = c("Finding", "Estimate", "Inference"))
+```
+
+## The gap exists (P1)
+
+On the claims for which a public folk belief can be set against the economists' verdict, the divergence is large and one-directional (@tbl-gaps, @fig-gap). For two of the three, a direct expert item exists: not one panellist endorsed the claim that the 2016 protectionist plan would help the middle class (a 36-point gap against the public), and on artificial intelligence and unemployment — where the panel is itself more divided, thirty-one percent agreeing, on only sixteen substantive responses, a thin base we flag wherever it is used — the public still runs far ahead, seventy-seven against thirty-one (a 45-point gap). For immigration we deliberately report *no* expert point estimate. No IGM item asks directly whether immigrants take jobs, and we do not manufacture one: an earlier draft inverted an unrelated item (economists' near-unanimous agreement that curtailing green cards would reduce skilled-immigrant *numbers*) into a spurious "three percent agree they take jobs," which is a non-sequitur and we have removed it. The direction is instead anchored where it belongs, on the National Academies' comprehensive consensus that immigration has little to no effect on the aggregate employment or wages of the native-born over the long run [@nas2017immigration] — opposite to the folk belief the public holds at forty-two percent. That direction is all the argument requires, since the gaps here are descriptive context and the paper's inferential weight rests on the individual-level and over-time analyses of the public items that follow. On all three claims, as the model anticipates (P1), belief sits far from the professional verdict; and the public beliefs themselves — that immigrants take jobs, that trade hollowed out the middle class, that automation will idle workers — are unverifiable from ordinary experience, their truth resting on counterfactuals no citizen can observe.
+
+```{r}
+#| label: tbl-gaps
+#| tbl-cap: "Public–expert agreement on unverifiable economic claims (weighted shares; gap = public − expert; CVI from Appendix A). Descriptive context only. Immigration carries no expert point estimate (no direct IGM item exists; its direction is anchored on the National Academies consensus, Appendix D), so its benchmark and gap are left blank rather than imputed."
+rd("macro_gaps.csv") |> kable(digits = 2)
+```
+
+```{r}
+#| label: fig-gap
+#| fig-cap: "Public versus expert agreement on unverifiable economic claims."
+rd("macro_gaps.csv") |>
+  pivot_longer(c(public_agree, expert_agree), names_to = "name", values_to = "value") |>
+  filter(!is.na(value)) |>
+  ggplot(aes(reorder(pair, value), value, fill = name)) +
+  geom_col(position = "dodge") + coord_flip() +
+  scale_y_continuous(labels = scales::percent) +
+  scale_fill_manual(values = c(public_agree = "#378ADD", expert_agree = "#1D9E75"),
+                    labels = c(public_agree = "Public", expert_agree = "Experts")) +
+  labs(x = NULL, y = "share agreeing", fill = NULL)
+```
+
+## Universal and education-corrigible (P2)
+
+Where an issue is not yet tribalized, the divergence from experts bears the folk signature, not the partisan one (P2). The clearest case is the technology-and-jobs claim, which elites have only lightly organized along party lines. An individual-level, survey-weighted model of holding the folk belief — that AI will reduce employment — on the 2024 Pew wave shows education doing the work that party does on tribalized claims: college graduates are markedly less likely to hold the belief (odds ratio 0.82) and party is present but modest (odds ratio 1.38; @tbl-micro), the correction running across the whole electorate. In a companion interaction model, education's corrective pull is itself weaker among Republicans (party×education odds ratio ≈ 0.68) — the first hint of the substitution to come. This is the folk regime as the theory describes it: a shared error that knowledge erodes [@caplan2007myth; @boyer2018folk], not yet a partisan possession.
+
+```{r}
+#| label: tbl-micro
+#| tbl-cap: "Individual-level divergence model (AI pair, Pew W152): odds ratios from a survey-weighted logit."
+rd("micro_model.csv") |> kable(digits = 2)
+```
+
+## The identity effect scales with tribalization (P3)
+
+The identity effect scales with how tribalized the issue is (P3). Estimating the party odds ratio on the folk belief for three claims ordered by tribalization — automation (2017), AI (2024), immigration — it rises monotonically from 1.04, statistically indistinguishable from no effect, through 1.70, to 3.79 (@tbl-gradient, @fig-gradient). Where elites have not organized an issue, party does not predict the factual belief; where they have, it predicts it powerfully. Education, by contrast, corrects across all three (college odds ratios 0.66, 0.75, 0.53), so the gradient is not a story of education giving way to party but of identity *switching on* on top of a folk error that schooling continues to erode. We flag a limit of this cross-sectional comparison: the three claims differ not only in tribalization but in survey house and period (Pew 2017, Pew 2024, GSS 2022–24), which covary with the issue, so part of the monotone rise could reflect instrument or era rather than tribalization alone. The gradient is therefore the suggestive, spatial face of the argument; the load-bearing evidence is the *within-issue, fixed-instrument* trajectory that the next results show unfolding in time, where survey and wording are held constant.
+
+```{r}
+#| label: tbl-gradient
+#| tbl-cap: "Party odds ratios (Republican vs Democrat) on the folk belief, by tribalization."
+rd("tribalization_gradient.csv") |> filter(term == "partyRep") |>
+  select(claim, estimate, conf.low, conf.high) |> kable(digits = 2)
+```
+
+```{r}
+#| label: fig-gradient
+#| fig-cap: "The identity effect rises with tribalization."
+rd("tribalization_gradient.csv") |> filter(term == "partyRep") |>
+  ggplot(aes(reorder(claim, estimate), estimate)) +
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high)) +
+  geom_hline(yintercept = 1, linetype = 2) + coord_flip() +
+  labs(x = NULL, y = "party odds ratio (Rep vs Dem) on folk belief")
+```
+
+## Sorting, not composition
+
+A natural alternative is composition: perhaps the parties' belief gap widened because their make-up changed, not because anyone's belief sorted. It did not (@tbl-diploma). In a pooled model interacting both party and education with era, the party×era term is large and significant (odds ratio 3.38) while the education×era term is null (1.14, *p* = .46). The across-era divergence is identity sorting, not the diploma divide — and, directly against a composition account, it is non-college Democrats who moved most.
+
+Education, however, is not the composition that matters most for immigration: the parties also diverged over these decades on race, ethnicity, and nativity, which are first-order predictors of immigration beliefs (the growing Hispanic and foreign-born share of Democratic identifiers, in particular). We therefore re-estimate the party×era interaction adding race, ethnicity, nativity, age, and region, each interacted with era (@tbl-composition-full). The party×era coefficient does not attenuate — it is, if anything, larger (log-odds +0.27 → +0.37 with race/ethnicity/nativity×era, +0.33 with age and region added). Its standard error widens, because the GSS asks the nativity and ethnicity items of only a subsample and the analytic *n* falls by a third, so the coefficient crosses into marginal significance (*p* ≈ .07–.11) on that smaller common sample; but the point estimate is unmoved. Compositional change on the demographics that most plausibly drive immigration attitudes does not account for the sorting — if anything it slightly suppresses it. The shift is in beliefs, not in who holds the party cards.
+
+```{r}
+#| label: tbl-diploma
+#| tbl-cap: "Pooled interaction model: party×era survives; education×era is null."
+rd("diploma_model.csv") |> kable(digits = 2)
+```
+
+```{r}
+#| label: tbl-composition-full
+#| tbl-cap: "Party×era on the fact, adding race/ethnicity/nativity/age/region×era controls (GSS, survey-weighted logit). The coefficient is robust — even larger — to the demographic shifts that matter most for immigration; the wider p-values reflect the one-third sample loss from the subsampled nativity/ethnicity items, not attenuation."
+rd("composition_controls_full.csv") |> kable(digits = 3, col.names = c("Model", "party×era (log-odds)", "p", "n"))
+```
+
+## Elite polarization preceded the public's, on the preference (P3)
+
+The public's sorting followed elite conflict in time rather than preceding it (@fig-precedence). Measuring tribalization from the Democrat–Republican gap in the tone of congressional immigration speech [@card2022immigration] — a quantity generated by elite behavior and independent of mass opinion — elite polarization rose roughly a decade before the public's partisan division on immigration did. We track that public division with the biennial immigration-restriction *preference* item, which, unlike the five-wave `immjobs` fact series, has enough observations to support a lead–lag analysis; the precedence result is thus a confirmation of issue evolution on a preference, not a claim about the fact's own timing. The contemporaneous correlation between the public gap and elite polarization is 0.66; at a ten-year lag it is 0.92; and a Granger-style regression of the public gap on lagged elite polarization, net of the gap's own lag, returns a coefficient of 0.72 (*p* = .063, eleven biennial observations). Because eleven observations cannot carry asymptotic inference, we corroborate this with a time-shift randomization that preserves each series' autocorrelation (Appendix B): the lag-ten correlation sits near the ninetieth percentile of the correlations obtained by aligning the public gap against arbitrarily shifted elite series (*p* ≈ .10), so the precedence is best read as suggestive temporal ordering rather than a powered result. We read it as confirmation of issue evolution [@carmines1989issue], not as a discovery: the dynamic by which elite conflict reorganizes the public is exactly what that literature established. The novelty is what is being reorganized — a truth-apt fact — and, as §7 shows, the order in which the public falls into line.
+
+```{r}
+#| label: fig-precedence
+#| fig-cap: "Elite polarization preceded the public partisan gap (lag-10 r = 0.92; Granger β = 0.72, p = .063; suggestive temporal ordering, not a causal estimate)."
+elite <- rd("elite_polarization_series.csv")
+pub   <- rd("precedence_series_letin1a.csv")
+ggplot() +
+  geom_line(data = elite, aes(year, polz_s, color = "Elite polarization")) +
+  geom_line(data = pub, aes(year, public_gap, color = "Public partisan gap"), linetype = 2) +
+  geom_point(data = pub, aes(year, public_gap, color = "Public partisan gap")) +
+  coord_cartesian(xlim = c(1950, 2025)) +
+  labs(x = "year", y = "polarization / partisan gap", color = NULL)
+```
+
+## The partisanization of a fact (P4)
+
+We now hold a single factual claim fixed and watch it cross from one regime to the other. The General Social Survey has asked, in identical wording across two decades, whether immigrants take jobs away from people born in America — a truth-apt claim the experts reject, and a paradigm time-traveller's report: its labor-market counterfactual is unobservable, so the citizen believes or disbelieves it on the strength of who is asserting it. In 1996 the belief carried no partisan signal: Republicans and Democrats agreed at forty-six and forty-nine percent, a gap of −3 points (@tbl-fact-gap, @fig-partisanization). The gap is +1 in 2004, +8 in 2014, +18 in 2022, and +33 in 2024 (Republicans forty-five percent, Democrats eleven). A factual belief that was bipartisan within living memory has become a strongly party-sorted one — sorting, by 2024, nearly as hard as the immigration-policy preference beside it (the convergence result below) — and it did so not by both sides pulling apart but by one side moving.
+
+```{r}
+#| label: tbl-fact-gap
+#| tbl-cap: "Share agreeing 'immigrants take jobs', by party and survey year."
+rd("fact_partisan_gap.csv") |> kable(digits = 3)
+```
+
+```{r}
+#| label: fig-partisanization
+#| fig-cap: "The partisanization of a fact: the Rep–Dem gap widens from ~0 (1996) to +33 pts (2024)."
+rd("fact_partisan_gap.csv") |>
+  pivot_longer(c(dem_share, rep_share), names_to = "party", values_to = "share") |>
+  mutate(party = recode(party, dem_share = "Democrats", rep_share = "Republicans")) |>
+  ggplot(aes(year, share, color = party)) +
+  geom_line(linewidth = 1) + geom_point(size = 3) +
+  scale_y_continuous(labels = scales::percent, limits = c(0, 0.6)) +
+  scale_color_manual(values = c(Democrats = "#378ADD", Republicans = "#D85A30")) +
+  labs(x = "year", y = "share agreeing \"immigrants take jobs\"", color = NULL)
+```
+
+The trajectory is not sampling noise. With design-based 95% confidence intervals (@fig-gap-trend), the gap is statistically indistinguishable from zero in 1996 and 2004 — the intervals comfortably include zero — becomes significantly positive by 2014, and rises monotonically to 2024, by which point it is estimated at 33 points with a confidence interval (roughly 28 to 39) nowhere near zero. The partisanization is precisely estimated, not an artifact of thin cells.
+
+```{r}
+#| label: fig-gap-trend
+#| fig-cap: "The partisan gap on the fact with design-based 95% confidence intervals: indistinguishable from zero through 2004, significantly positive and growing thereafter."
+rd("fact_partisan_gap_ci.csv") |>
+  ggplot(aes(year, gap)) +
+  geom_hline(yintercept = 0, linetype = 2, color = "grey60") +
+  geom_ribbon(aes(ymin = gap_lo, ymax = gap_hi), alpha = 0.18, fill = "#D85A30") +
+  geom_line(linewidth = 1, color = "#D85A30") + geom_point(size = 2.6, color = "#D85A30") +
+  scale_y_continuous(labels = scales::percent) +
+  labs(x = "year", y = "Rep − Dem gap on the fact (95% CI)")
+```
+
+The widening is, on net, overwhelmingly one-sided — but the dynamics are not monotonic, and we report them interval by interval rather than only at the endpoints (@tbl-gap-decomp). Of the *net* change in the partisan gap from 1996 to 2024, ninety-eight percent is Democratic movement, toward the position the professional consensus implies (the direction, not the level, is what the benchmark fixes; Appendix D). Across the first three intervals (through 2022) the change is 70–85 percent Democratic, with the Democratic share of the belief falling monotonically from forty-nine to sixteen percent. The exception is the most recent interval: between 2022 and 2024 the Republican share jumped from thirty-four to forty-five percent, so that interval's widening is roughly seventy percent Republican movement. The Republican series is therefore U-shaped (45 → 42 → 41 → 34 → 45), not flat, and we are careful not to describe the in-group as "anchored in place" without qualification: across three decades it moved little *on net*, but the 2024 rise — whether Trump-era re-mobilization of the folk belief, or a feature of that wave's mode or sample — is real, unexplained, and flagged rather than smoothed. With that qualification, the long-run pattern is asymmetric convergence: tribalization moved the party for whom the consensus position is congenial toward it, while the other party's net position barely changed.
+
+```{r}
+#| label: tbl-gap-decomp
+#| tbl-cap: "Interval-by-interval decomposition of the partisan-gap change on the fact (GSS immjobs). Most of the long-run widening is Democratic movement, but the 2022–2024 interval is Republican-driven — the in-group is not monotonically anchored."
+rd("gap_decomposition_by_interval.csv") |>
+  kable(col.names = c("Interval", "Δ Dem (pts)", "Δ Rep (pts)", "Δ gap (pts)", "% from Dem", "% from Rep"))
+```
+
+## A fact comes to sort like a preference (P4)
+
+This is the paper's thesis made literal (@fig-convergence). We compare the partisan gap on the fact to the gap on the matched immigration-policy *preference* — that the number of immigrants should be reduced. In 2004 the preference was already partisan (a 9-point gap) while the fact was essentially flat (under a point): the fact's gap was nine percent of the preference's. By 2024 the fact's gap had climbed to seventy-two percent of the preference's. A truth-apt belief migrated into the partisan structure a taste already had — it came to sort, by party, almost as hard as a policy demand. We are deliberately precise about the claim: this is convergence in *levels*, the fact rising toward the preference's degree of partisanship, not a claim that the fact partisanized faster (on the log-odds scale the preference's slope is, if anything, marginally steeper; Appendix B).
+
+```{r}
+#| label: fig-convergence
+#| fig-cap: "A fact comes to sort like a preference. The partisan gap on the factual belief rises from ~9% of the gap on the matched policy preference in 2004 to ~72% by 2024 — the fact migrates into the partisan structure the preference already had."
+rd("fact_pref_convergence.csv") |>
+  ggplot(aes(year, gap, color = series, shape = series)) +
+  geom_line(linewidth = 1) + geom_point(size = 2.6) +
+  scale_y_continuous(labels = scales::percent) +
+  scale_color_manual(values = c("fact (immigrants take jobs)" = "#D85A30",
+                                "preference (reduce immigration)" = "#534AB7")) +
+  labs(x = "year", y = "Rep − Dem partisan gap", color = NULL, shape = NULL)
+```
+
+## Fused, not converging
+
+It is worth being clear about what did *not* change. The fact and the preference were always correlated, at roughly 0.4, and that coupling is essentially flat across the whole period among respondents asked both items (@fig-coupling). What changed is not that the two items grew more correlated but that the factual one acquired the partisan loading the preference had carried all along. We flag this because an earlier reading of these data — as a within-person fact–preference correlation rising from negative to positive — does not survive the survey's split-ballot structure: the two items were administered to disjoint samples in 2004, so no such correlation is even estimable that year, and the apparent negative value was an artifact of treating non-respondents as disbelievers. The corrected result is the cleaner and stronger one: a fact did not fuse with a preference, it *became* one, in the precise sense of acquiring its partisan signature. One scope note follows from the repeated-cross-section design, and we make it explicit because the prose elsewhere speaks of "a citizen" falling back on a prior: everything we observe is between-group. We watch party *aggregates* move across waves, not individuals cross within their own lifetimes; in the cross-sections, "capture" names a change in the partisan distribution of the belief, not a within-person transition the data record. Establishing the individual-level dynamic requires a panel — the same people, asked the same factual question, before and after the issue tribalized. The next section turns to exactly such a panel, and finds the within-person transition the cross-sections could only imply.
+
+```{r}
+#| label: fig-coupling
+#| fig-cap: "Fact and preference are stably coupled (true co-respondents), not converging."
+rd("fusion_coupling.csv") |>
+  mutate(pref_item = recode(pref_item,
+           letin1 = "levels item (letin1)", letin1a = "reduce item (letin1a)")) |>
+  ggplot(aes(year, r, color = pref_item, shape = pref_item)) +
+  geom_line() + geom_point(size = 3) +
+  scale_y_continuous(limits = c(0, 0.6)) +
+  labs(x = "year", y = "within-year correlation, fact vs preference",
+       color = NULL, shape = NULL)
+```
+
+## The capture happens within persons (P4) {#sec-panel}
+
+The cross-sections show party aggregates drifting apart; they cannot show a belief changing inside a person. For that we turn to a panel that followed the same respondents across the entire tribalization: the Views of the Electorate Research (VOTER) Survey, which re-interviewed a national sample in 2011 — before Trump, before immigration hardened into the partisan fault line — and again in 2016, 2018, and 2020 [@voter2020]. In each wave respondents judged whether immigrants "mostly make a contribution to American society" or are "mostly a drain" — a truth-apt belief about immigration's effects, of the same family as the economic fact, asked of the same people before and after the issue tribalized. This is the design the cross-sections could only gesture at: it holds the individual fixed and lets the years move.
+
+Three findings, each the within-person counterpart of an aggregate result above. First, capture reappears inside the same people. Among respondents present throughout, the Republican–Democrat gap in holding the "drain" belief widened from 47 points in 2011 to roughly 62 in 2020 (@fig-voter), and it widened by the now-familiar asymmetry: Democrats abandoned the belief (35% to 10%) while Republicans held nearly still (82% to 72%). The out-group converged on the expert direction and the in-group stayed put — the GSS aggregate signature, reproduced within individuals rather than inferred across cohorts.
+
+Second, the panel supplies the direction the cross-sections had to leave open — and it does so under the model the within-person claim actually requires. The two-wave cross-lagged panel model is the wrong tool here: it conflates stable between-person differences with within-person change, and its cross-lags are known to mislead about direction when two constructs differ in stability, as party and belief do. We therefore estimate the random-intercept cross-lagged panel model [@hamaker2015critique], which separates each respondent's stable trait level (a random intercept) from the within-person fluctuations whose lead–lag structure is the actual object of interest, across all four waves (2011, 2016, 2018, 2020; @tbl-voter-riclpm). Stripping out the between-person variance does not weaken the asymmetry — it sharpens it. The within-person path from *party* to the *later belief* is 0.40 (p < .001), while the path from belief to later party is 0.12 (p < .001); the two differ decisively (difference 0.28, bootstrap 95% CI [0.19, 0.38], positive in all 300 resamples). Where a respondent stood partisanly *before* the issue tribalized predicts their later factual belief more strongly than the reverse. We are candid that the *magnitude* of this asymmetry is model-dependent — the party-leads-to-belief-leads ratio is about 1.65-to-1 in the two-wave model and 3.3-to-1 in the random-intercept one — and that part of it may reflect differential reliability rather than dynamics: party is measured far more stably than the belief (autoregressions of 0.83 versus 0.23), and cross-lagged models, the RI-CLPM included, tend to let the more stable, more reliably measured construct appear causally prior. The RI-CLPM removes stable *between-person* differences but not differential *measurement* reliability, so we do not over-read the threefold figure. What is robust across every specification is the *sign*: the within-person lead runs from party to belief, not the reverse. The direction we take as established; the precise strength we do not. That is capture with a direction on it — the temporal signature of a belief being brought into partisan line.
+
+Third, the sorting is concentrated exactly where capture predicts. Of the respondents whose 2011 belief was *out of step* with their party — Democrats who thought immigrants a drain, Republicans who thought them a contribution — two-thirds (66%) had brought the belief into line with their party by 2020; overall party–belief alignment rose from 74% to 83%. The movement is not noise around a stable mean; it is one-directional travel toward the party's position, undertaken disproportionately by the people who began on the "wrong" side of it.
+
+This is the result the *momentary* form of the expressive-responding objection cannot absorb. A one-shot survey answer given to please one's side can be dismissed as cheerleading; a belief that reverses over nine years, within the same person, to match a party line they did not previously hold is not a momentary performance. We are careful not to overclaim: durability is not sincerity, since expressive responding can persist if the underlying identity pressure persists and strengthens, as it plausibly did across 2011–2020 — so the panel narrows the objection rather than closing it, and only the incentivized-accuracy experiment (Appendix E) can finally partition sincere belief from durable expression. What the panel does establish is the thing the cross-sections could not: it converts the paper's boldest claim from an inference about aggregates into an observation about individuals — we watch the citizen who could not check the fact come to hold the answer their party handed them, inside the same person, across the very years the issue was being tribalized.
+
+We are precise about scope. The VOTER item is a broad societal-contribution judgment — whether immigrants are a net "contribution" or "drain" to American society — rather than the verbatim "take jobs" wording of the GSS economic fact; it is economically inflected but folds in fiscal, cultural, and other considerations, so it sits closer to an omnibus societal judgment than to a clean employment fact. We therefore read the panel as establishing the *within-person dynamic* of capture on a broad immigration-impact belief, with the precise economic-fact wording carried by the cross-sectional GSS and ANES analyses; the two are complementary, not interchangeable. We state the consequence plainly: there is, as a result, *no* within-person directional evidence on the verbatim "take jobs" economic fact itself — the cross-sections carry that fact but cannot show individual dynamics, and the panel shows individual dynamics on the broader item. Closing that exact gap would require a panel that fielded the economic-fact wording across the tribalization, which we do not have and list as the outstanding within-person extension. Three further cautions. The random-intercept model identifies lead–lag structure, not strict causation. A transparent change-score check — regressing the 2011→2020 change in the belief on 2011 party — returns β = 0.12 (p < .001), which we are careful *not* to equate with the 0.40 cross-lag: it is a more restrictive estimator (it constrains the belief autoregression to one) and a more conservative figure, confirming that prior party positively predicts subsequent belief change but not the threefold ratio. The party-leads *direction* is consistent across the two-wave model, the RI-CLPM, and the change-score; its *size* is not, and we report the range rather than a single number. Respondents present in all four waves are a selected, repeatedly-interviewed subset, and panel conditioning toward attitudinal consistency could in principle manufacture sorting; we estimate on the full-participation sample with the panel's longitudinal weight, and note that conditioning would have to act *asymmetrically by party direction* to produce the party-leads result rather than mere alignment, which it has no obvious reason to do. What the panel removes is the central inferential gap the cross-sections left open — whether anyone's factual belief actually moved into partisan line, or whether only the population's composition shifted. Someone's did, by the millions, and party led the way.
+
+```{r}
+#| label: fig-voter
+#| fig-cap: "Capture within persons. Among the same VOTER-panel respondents (2011–2020), the share holding that immigrants are 'mostly a drain' splits ever wider by party — Democrats abandon the belief while Republicans hold — reproducing the GSS aggregate signature inside individuals across the tribalization."
+rd("voter_within_person_gap.csv") |>
+  tidyr::pivot_longer(c(dem_share, rep_share), names_to = "party", values_to = "share") |>
+  dplyr::mutate(party = dplyr::recode(party, dem_share = "Democrats", rep_share = "Republicans")) |>
+  ggplot(aes(year, share, color = party, shape = party)) +
+  geom_line(linewidth = 1) + geom_point(size = 2.8) +
+  scale_y_continuous(labels = scales::percent, limits = c(0, 1)) +
+  scale_color_manual(values = c("Democrats" = "#534AB7", "Republicans" = "#D85A30")) +
+  labs(x = "year", y = "share: immigrants 'mostly a drain'", color = NULL, shape = NULL)
+```
+
+## A fact as sorted as a value
+
+How party-sorted is that, in absolute terms? The natural yardstick is the set of issues we already treat as *defining* the partisan divide. In 2024 the Republican–Democrat gap on the factual belief that immigrants take jobs (33 points) is as large as the gaps on the canonical moral and cultural cleavages — gun permits (30), gay rights (33), the death penalty (35) — and approaches abortion (45) and the matched immigration-policy preference (46) (@fig-benchmark). A truth-apt empirical claim now divides the parties about as sharply as the value questions that organize American politics. That is the substantive meaning of capture: not merely that the gap grew, but that it grew into the company of the deepest cleavages — while remaining, unlike them, a question with a right answer.
+
+```{r}
+#| label: fig-benchmark
+#| fig-cap: "The 2024 partisan gap on the immigration fact in context: as large as canonical value cleavages, approaching the matched policy preference (GSS 2024; |Rep − Dem|, 95% CI)."
+rd("party_gap_benchmark.csv") |>
+  mutate(item = factor(item, levels = item)) |>
+  ggplot(aes(abs_gap_pts, item, color = kind)) +
+  geom_errorbarh(aes(xmin = abs_gap_pts - ci95_pts, xmax = abs_gap_pts + ci95_pts), height = 0.25) +
+  geom_point(size = 3) +
+  scale_color_manual(values = c("economic fact" = "#D85A30", "preference" = "#534AB7",
+                                "moral/value" = "#1D9E75")) +
+  labs(x = "|Republican − Democrat| gap, 2024 (percentage points)", y = NULL, color = NULL)
+```
+
+# Mechanism: not an information deficit
+
+Is the capture the residue of ignorance — the less informed adopting whatever their side says — or something that survives, even strengthens with, sophistication? The two possibilities make opposite predictions about the role of knowledge, and that single divergence adjudicates between them. It does *not*, we stress at the outset, identify *why* sophistication amplifies. Three accounts survive the test, against which only the information-deficit and naïve-Bayesian readings fall: motivated reasoning (capacity recruited to defend identity), divergent information environments (the engaged of each side absorbing more of their own diet, §5), and expressive responding (the sophisticated being better at knowing and *reciting* their side's line). What follows establishes the comparative static — that the gap grows with sophistication, not shrinks — and reads it as consistent with asymmetric motivated reasoning, while narrowing but not eliminating the other two; the section title claims only what the evidence licenses, that the capture is *not an information deficit*.
+
+## Emergence among the educated (GSS)
+
+In the GSS, the partisan gap on the fact emerges *first* among the college-educated. By 2014 it stood at roughly twenty-one points among graduates while remaining near zero among non-graduates, diffusing to the rest of the electorate only later (@fig-mechanism). Sorting that appears first where the capacity to evaluate evidence is highest is the signature of motivated reasoning, and it mirrors the elite-to-public diffusion of the precedence result — capture begins at the top, in both the elite-mass and the sophisticated-unsophisticated sense. We report this as a temporal ordering rather than a single coefficient, because across so few survey-years the pooled interaction is positive but imprecise.
+
+```{r}
+#| label: fig-mechanism
+#| fig-cap: "The partisan gap on the fact emerges first among the college-educated."
+rd("fact_gap_by_education.csv") |>
+  mutate(education = recode(education, college = "college", no_college = "no college")) |>
+  ggplot(aes(year, gap, color = education, shape = education)) +
+  geom_hline(yintercept = 0, color = "grey70") +
+  geom_line(linewidth = 1) + geom_point(size = 3) +
+  scale_y_continuous(labels = scales::percent) +
+  labs(x = "year", y = "Rep - Dem gap", color = NULL, shape = NULL)
+```
+
+This sequence reconciles two facts that can look opposed: the partisan gap *emerges* first among graduates (here), yet it is non-college Democrats who ultimately *move* most (§6). They are two stages of one process (@fig-movement). College Democrats abandon the folk belief a decade before anyone else — opening the early gap among the educated — while non-college Democrats, starting from a far higher baseline (55 percent in 1996), peel away later but travel farther, to 18 percent by 2024 (a 37-point fall against the college Democrats' 24). Republicans of both education levels barely move throughout. The educated lead; the less-educated catch up and, from their higher start, cover the greater distance. First-mover and largest-mover are different roles, and Democrats of different educations play them in turn.
+
+```{r}
+#| label: fig-movement
+#| fig-cap: "Who moved, and when: share agreeing 'immigrants take jobs', by party and education (GSS). College Democrats peel away first; non-college Democrats start higher, move later, and travel farther; both Republican groups barely move."
+rd("fact_gap_by_education.csv") |>
+  pivot_longer(c(dem_share, rep_share), names_to = "party", values_to = "share") |>
+  mutate(party = recode(party, dem_share = "Democrats", rep_share = "Republicans"),
+         education = recode(education, college = "college", no_college = "no college")) |>
+  ggplot(aes(year, share, color = party, linetype = education)) +
+  geom_line(linewidth = 1) + geom_point(size = 2) +
+  scale_y_continuous(labels = scales::percent, limits = c(0, 0.6)) +
+  scale_color_manual(values = c(Democrats = "#378ADD", Republicans = "#D85A30")) +
+  labs(x = "year", y = "share agreeing \"immigrants take jobs\"", color = NULL, linetype = NULL)
+```
+
+## Confirmation in a second survey (ANES 2024)
+
+The clean test comes from a different survey, a *behavioral* measure of sophistication, and many sampling units. In the 2024 ANES, the partisan gap on whether immigration is likely to take jobs *widens monotonically with political knowledge* — from thirty-four points among the least knowledgeable to forty-six among the most — and the design-based party-by-knowledge interaction is +0.51 (*p* \< .001; @tbl-anes, @fig-anes). The most informed Democrats are the *most* likely to reject the folk belief; informed Republicans do not move. An information-deficit account predicts the gap should shrink with knowledge; it does the reverse. The result is positive and significant across all twenty-four reasonable specifications (@fig-multiverse) [@simonsohn2020specification; @steegen2016multiverse], concentrates among strong partisans, and survives dropping the weights (Appendix B).
+
+```{r}
+#| label: tbl-anes
+#| tbl-cap: "Partisan gap on 'immigrants take jobs' by political-knowledge level (ANES 2024)."
+rd("anes_gap_by_knowledge.csv") |> kable(digits = 3)
+```
+
+```{r}
+#| label: fig-anes
+#| fig-cap: "The gap widens with political knowledge — the opposite of an information-deficit prediction, and consistent with asymmetric motivated reasoning (party×knowledge +0.51, p < .001)."
+rd("anes_gap_by_knowledge.csv") |>
+  mutate(knowledge = factor(knowledge, levels = c("low (0-1)", "mid (2)", "high (3-4)"))) |>
+  pivot_longer(c(dem_share, rep_share), names_to = "party", values_to = "share") |>
+  mutate(party = recode(party, dem_share = "Democrats", rep_share = "Republicans")) |>
+  ggplot(aes(knowledge, share, color = party, group = party)) +
+  geom_line(linewidth = 1) + geom_point(size = 3) +
+  scale_y_continuous(labels = scales::percent, limits = c(0, 0.6)) +
+  scale_color_manual(values = c(Democrats = "#378ADD", Republicans = "#D85A30")) +
+  labs(x = "political knowledge (0-4 correct)", y = "share agreeing", color = NULL)
+```
+
+## The amplification is borne by the out-group
+
+The amplification is not symmetric across parties, and the asymmetry is itself informative. Decomposing the knowledge effect within each party (@tbl-knowledge-party), the slope of the folk belief on political knowledge is sharply negative among Democrats (log-odds −0.49, *p* \< .001) — the most knowledgeable Democrats hold the belief at seven percent against seventeen among the least — while among Republicans it is flat and insignificant (+0.04, *p* = .36). The two slopes differ decisively: a direct test of the difference (the party×knowledge interaction) returns +0.53, *p* \< .001, so the asymmetry is a tested quantity, not an eyeballed contrast. This bears on two rivals at once. Classic identity-protective cognition is *symmetric* — it predicts sophistication sharpens both poles [@kahan2012polarizing; @kahan2013ideology] — and a naïve account in which knowledge tracks the truth predicts both sides move toward the experts; the one-sidedness contradicts each. It is, instead, what the present model predicts: sophistication amplifies enactment of the identity prior $p(s)$, and for Republicans the party line coincides with the folk default, so capacity has nothing to add, while for Democrats the line departs from it, so knowledge carries them toward the experts.
+
+We are careful about what the one-sidedness does *not* establish. It rules out symmetric cheerleading and naïve truth-tracking, but it does not adjudicate between motivated reasoning and *divergent information environments*, and we do not claim it does. Under the divergent-diets account the expert signal sits in the Democratic media diet and the folk-congruent signal in the Republican one, so the attentive of each side absorb opposite signals — reproducing the very one-sidedness we observe through exposure rather than cognition [@jerit2012partisan]. The asymmetry is therefore *consistent with* asymmetric motivated reasoning [@taber2006motivated] but does not identify it against selective exposure. Two observational controls narrow, without closing, the exposure channel: the party×knowledge interaction on the fact survives controlling for party×political-attention (+0.51 → +0.40) and, more to the point, for party×trust-in-media — a content-relevant proxy for which sources a partisan credits — falling only from +0.53 to +0.49 (*p* \< .001; @tbl-mediadiet). Differential trust in, and attention to, mainstream sources does not account for the amplification; but neither control measures the *content* of consumption directly, and only the pre-registered incentivized-accuracy experiment (Appendix E) can separate cognition from exposure cleanly. We therefore read "knowledge enacts the party line" as a description of the pattern — the better-informed move toward their party's pole, which for the out-group coincides with the experts — not as an identified claim that cognition rather than exposure produces it.
+
+The aggregate counterpart is the one-sided movement of the capstone, though we are precise about its dynamics. Across the whole period the gap's growth is overwhelmingly Democratic (ninety-eight percent of the *net* 1996→2024 change), and the Democratic series falls monotonically; but the Republican series is not flat throughout — it drifts down through 2022 and then rises eleven points in 2024, so the most recent interval is roughly seventy percent Republican movement (§6, @tbl-gap-decomp). The in-group is thus better described as having moved little *on net* across three decades than as anchored in place. General *education*, by contrast, erodes the folk error on both sides (on trade as on immigration the college-educated hold it less, consistent with P2) — which is the point: it is *political knowledge*, the capacity to recognize and apply the party line, that moves the out-group alone. The same asymmetry, at far larger scale, governs the matched immigration preference in the Cooperative Election Study (≈ 38,000 respondents per survey; party×education interaction +0.38 to +0.80; Appendix B), so the machinery is not a small-sample artifact.
+
+```{r}
+#| label: tbl-knowledge-party
+#| tbl-cap: "Within-party decomposition: political knowledge moves Democrats toward the experts but leaves Republicans flat (ANES 2024; survey-weighted logit of the folk belief on standardized knowledge, within party)."
+rd("anes_knowledge_by_party.csv") |>
+  kable(digits = 3, col.names = c("Party", "Belief, low knowledge", "Belief, high knowledge",
+                                  "Knowledge (log-odds)", "p", "n"))
+```
+
+## Why knowledge, not just education
+
+Does the result depend on the ANES or on its particular sophistication measure? It recurs in the GSS, with education in place of the knowledge battery — but through a revealingly different door (@tbl-education-by-party). Across the high-tribalization years (2014–2024), education lowers the folk belief in *both* parties: Democrats from 24 to 10 percent across the college line, Republicans from 42 to 32. General schooling is the classic corrector of folk-economic error, and it corrects everyone. It corrects Democrats about twice as steeply (a within-party log-odds of −1.04 against −0.44), so the partisan gap still widens with education — from 19 points among non-graduates to 22 among graduates — though only modestly. Political knowledge in the ANES does something sharper: it leaves Republicans flat and moves only Democrats, widening the gap from 34 to 46 points.
+
+The contrast is not a discrepancy but a prediction of the model, and it is why the decisive test is the knowledge interaction rather than the education one. Education acts on the folk prior $f(s)$, common to both parties, and pulls both toward the experts; political knowledge — the capacity to recognize and enact the party line — acts on $p(s)$, which departs from folk intuition only for the out-group. A measure of general human capital therefore corrects the shared error in everyone and sorts only weakly; a measure of party-line enactment isolates the identity channel and sorts sharply. Two surveys and two measures point the same way, and they differ exactly as the two-channel model says they should: in whether the in-group is corrected (by schooling) or left where its party sits (under political knowledge).
+
+```{r}
+#| label: tbl-education-by-party
+#| tbl-cap: "GSS within-party education slopes on the immigration fact (2014–2024). Education corrects both parties — unlike ANES political knowledge, which moves only the out-group — but corrects Democrats about twice as steeply."
+rd("gss_education_by_party.csv") |>
+  kable(digits = 3, col.names = c("Party", "No college", "College", "Education (log-odds)", "n"))
+```
+
+## Robustness: multiverse and heterogeneity
+
+```{r}
+#| label: spec-curve
+#| results: asis
+.scp <- file.path(proc, "anes_spec_curve.csv")
+if (file.exists(.scp)) {
+  sc <- readr::read_csv(.scp, show_col_types = FALSE)
+  cat(sprintf("Across %d specifications the party$\\times$knowledge interaction is positive in %.0f%% and significant (p<.05) in %.0f%% (coefficients %.2f--%.2f).",
+              nrow(sc), mean(sc$coef > 0) * 100, mean(sc$coef > 0 & sc$p < .05) * 100,
+              min(sc$coef), max(sc$coef)))
+} else cat("*[Multiverse pending --- run `Rscript run_all.R` to generate `anes_spec_curve.csv`.]*")
+```
+
+```{r}
+#| label: fig-multiverse
+#| fig-cap: "Specification curve: the party×knowledge interaction across 24 specifications (sorted; purple = p < .05)."
+rd("anes_spec_curve.csv") |>
+  arrange(coef) |> mutate(rank = row_number(), sig = p < .05) |>
+  ggplot(aes(rank, coef, color = sig)) +
+  geom_hline(yintercept = 0, linetype = 2, color = "grey60") +
+  geom_point(size = 2) +
+  scale_color_manual(values = c(`TRUE` = "#534AB7", `FALSE` = "grey70"),
+                     labels = c(`TRUE` = "p < .05", `FALSE` = "n.s.")) +
+  labs(x = "specification (sorted by coefficient)",
+       y = "party x knowledge interaction (log-odds)", color = NULL)
+```
+
+```{r}
+#| label: tbl-het-strength
+#| tbl-cap: "Heterogeneity: Rep–Dem gap on the fact by knowledge level, within partisan strength (ANES 2024)."
+rd("anes_het_strength.csv") |>
+  pivot_wider(names_from = klev, values_from = gap) |>
+  select(strength, low, high) |>
+  kable(digits = 2, col.names = c("Partisan strength", "Low-knowledge gap", "High-knowledge gap"))
+```
+
+```{r}
+#| label: tbl-het-age
+#| tbl-cap: "Heterogeneity: party×knowledge interaction by age cohort (ANES 2024)."
+rd("anes_het_age.csv") |> kable(digits = 3, col.names = c("Age cohort", "Interaction (log-odds)", "n"))
+```
+
+## Out-of-sample replication
+
+The multiverse establishes that the 2024 interaction is robust *within* its survey; it cannot establish that the result is not peculiar to that survey or to the four-item battery. The ANES Time Series Cumulative File lets us check both at once. It carries the identical "take jobs" fact, harmonized across years (`VCF9223`), together with a *different* sophistication measure — the interviewer's rating of the respondent's general level of political information — fielded in the earlier, fully in-person waves. Re-estimating the party×sophistication interaction on the fact thus replicates the result out of sample in two senses simultaneously: a different operationalization of sophistication, in different survey-years. It reproduces cleanly (@tbl-cdf-replication): the interaction is +0.39 in 2008, +0.40 in 2012, and +0.52 in 2016 — the last essentially the 2024 magnitude — and +0.41 pooled (p ≈ 10⁻¹⁰). It is, tellingly, *absent* in 2004 (+0.05, n.s.): before immigration had hardened along party lines, sophistication did not amplify the gap, exactly the conditional law the theory predicts (P2/P3) — amplification appears only once the issue tribalizes. The headline mechanism is therefore neither a one-survey nor a one-instrument artifact; it recurs across four surveys and two distinct sophistication measures, and switches off in the pre-tribalization year as the model requires.
+
+```{r}
+#| label: tbl-cdf-replication
+#| tbl-cap: "Out-of-sample replication (ANES Cumulative File): party×political-information interaction on the immigration 'take jobs' fact, using the interviewer's information rating in place of the behavioral battery. Present once the issue tribalizes (2008–2016), absent before (2004)."
+rd("anes_cdf_replication.csv") |>
+  kable(digits = 3, col.names = c("Year", "Interaction (log-odds)", "p", "n"))
+```
+
+## Scope: sophistication amplifies only in the identity regime
+
+The mechanism is bounded, not universal — sophistication does not make people polarize on everything. Using education as a common sophistication measure across surveys, the party×education interaction on the folk belief is null where the issue is untribalized (automation), *negative* where education still corrects the folk error (AI), and positive where the issue is tribalized (immigration; @tbl-falsification). Sophistication thus plays opposite roles in the two regimes: it *corrects* the folk error where party is not engaged and *defends* the party line where it is. We are direct about the limits of this particular table: the predicted positive cell — the immigration party×education interaction — is positive (+0.337) but does *not* clear significance (*p* = .27), while the AI cell is significantly negative; so the gradient runs in the predicted *direction* across the three issues but is not a monotonic-with-significance pattern. We therefore present @tbl-falsification as supporting scope evidence rather than a clean law — the education-based estimates are individually noisy, and within immigration the amplification weakens after 2014 as the sorting diffuses beyond graduates (@fig-mechanism) — and we let the design-clean ANES knowledge result (the directly tested asymmetry, robust to education, ideology, racial-resentment, and media-trust controls; @tbl-knowledge-controls, @tbl-resentment-controls, @tbl-mediadiet) carry the primary weight.
+
+```{r}
+#| label: tbl-falsification
+#| tbl-cap: "Scope of the mechanism: party×education amplification of the folk belief by tribalization. Null at low tribalization, correcting at low-mid, amplifying at high."
+rd("falsification.csv") |>
+  kable(digits = 3, col.names = c("Claim", "Tribalization", "party×education", "p", "n"))
+```
+
+## The structural signature: the sophistication premium is itself a product of tribalization
+
+The model's gap equation, $\text{Gap}(s) = (1-\alpha)\,g(T)\,(p_R(s)-p_D(s))$, is *multiplicatively separable*, and that separability makes a prediction sharper than anything tested so far. Two of its quantities are observable over time on the same fact: the mass partisan gap — the $g(T)$ term — and the *sophistication premium*, the party×sophistication interaction, which is $\partial\,\text{Gap}/\partial s$ and which the model makes proportional to $g(T)$ as well. Ordinary issue-evolution predicts the gap should grow as elites polarize an issue. The two-regime model predicts something issue-evolution does not: the sophistication premium should grow *with it*, from zero before tribalization — the cross-derivative $\partial^2\text{Gap}/\partial s\,\partial T > 0$. The premium is not a standing trait of the sophisticated; it should switch on as the issue tribalizes.
+
+It does. Taking the immigration "take jobs" fact across the years the elite-tribalization series covers (ANES Cumulative, 2004–2016) and measuring sophistication by the interviewer's political-information rating, both quantities move together with elite tribalization (@fig-structural). In 2004, before immigration tribalized, both are essentially zero — the mass gap is $-0.04$ and the sophistication premium is $+0.05$ (n.s.). As elite tribalization rises across 2008–2016, both rise in step: the mass gap to $+0.23$ and the premium to $+0.52$, tracking the elite series at correlations of $+0.86$ and $+0.91$, and each other at $+0.85$. The sophistication premium is, empirically, a product of the issue's tribalization, exactly as the multiplicative $g(T)$ structure requires — and this is the feature that separates the model from a generic account in which the gap merely widens.
+
+One further detail confirms the *channel* structure rather than muddying it. The same premium measured by general *education* instead of political information does not switch on with tribalization — it is already large in 1996, before the cleavage. That is the right behavior under the model, not a contradiction: education acts on the folk prior $f(s)$, which is present and corrigible in *both* regimes, whereas political information acts on the identity term $p(s)$, which enters only through $g(T)$. The two sophistication measures diverge precisely because the model says they tap different channels. We hold this result to the same modest standard as the precedence analysis it complements: four survey-years are a descriptive pattern, anchored by the clean 2004 null, not a powered estimate — but the pattern is the functional form of the theory, visible in the data.
+
+```{r}
+#| label: fig-structural
+#| fig-cap: "The multiplicative structure, made visible. On the immigration fact (ANES Cumulative 2004–2016), the mass partisan gap and the sophistication premium (party×political-information interaction) both rise from ~zero in step with elite tribalization — the $g(T)$ term and its sophistication-derivative scaling together, as $\\text{Gap}=(1-\\alpha)\\,g(T)\\,\\Delta p(s)$ predicts."
+rd("structural_signature.csv") |>
+  tidyr::pivot_longer(c(mass_gap, sophistication_premium), names_to = "quantity", values_to = "value") |>
+  dplyr::mutate(quantity = dplyr::recode(quantity,
+        mass_gap = "mass partisan gap",
+        sophistication_premium = "sophistication premium")) |>
+  ggplot(aes(elite_tribalization, value, color = quantity, shape = quantity)) +
+  geom_hline(yintercept = 0, color = "grey75") +
+  geom_line(linewidth = 0.9) + geom_point(size = 2.8) +
+  geom_text(aes(label = year), color = "grey40", size = 3, vjust = -0.9, show.legend = FALSE) +
+  scale_color_manual(values = c("mass partisan gap" = "#D85A30",
+                                "sophistication premium" = "#534AB7")) +
+  labs(x = "elite tribalization T (congressional immigration speech)",
+       y = "value", color = NULL, shape = NULL)
+```
+
+## Beyond immigration, and beyond economics
+
+If the account is right, immigration is not special. The mechanism is defined by the *structure* of a claim — truth-apt, unverifiable from ordinary experience, contested by elites, with a folk default that one party's pole shares — not by its content, so it should appear on any belief with that structure, in any domain. It does. Consider a fact from outside economics entirely: whether human beings evolved from earlier species of animals. The scientific consensus is all but universal; the claim is unverifiable from everyday life; the folk default — that humans are not animals — is just the kind of pre-political intuition the model places at $f$; and elites have contested it along partisan and religious lines. The GSS science module fields it (`evolved`) from 2006 to 2018, and every signature of the immigration result reappears (@fig-evolution). The Republican–Democrat gap in *disbelief* grows from fourteen points in 2006 to twenty-four in 2018, and it grows one-sidedly, exactly as on immigration: Democrats converge on the scientific consensus (disbelief falls from 43 to 34 percent) while Republicans anchor at the folk default (essentially flat, 57 to 58 percent). A sophistication signature appears here too — the party-by-education interaction on disbelief is +0.59 (*p* = .001) — but it does not survive the obvious confound, and we report that plainly rather than let a referee find it. Disbelief in evolution is heavily structured by religiosity, which is itself correlated with party; once we control for church attendance and biblical literalism and their interactions with party, the party-by-education interaction falls to +0.21 and loses significance (*p* = .15). So we make a deliberately narrower claim for this case than for immigration. Evolution corroborates the *capture* — a non-economic fact acquiring a partisan structure, asymmetrically, over two decades — which is the generalization that matters: the phenomenon is not confined to economics or to immigration. But its sophistication-amplification is entangled with religiosity in a way the immigration result (where the knowledge interaction survives attention controls, §7) is not, so we lean on evolution for the partisanization itself, not as independent evidence for the sophistication mechanism. The series is also short (seven waves, ending 2018) and measured by education rather than the behavioral knowledge battery. The Time-Traveller's Problem is not a fact about one issue; it is a fact about belief under unverifiability, and economics is its cleanest laboratory, not its only one.
+
+```{r}
+#| label: fig-evolution
+#| fig-cap: "The same capture, a different domain: the partisan gap on whether humans evolved (GSS science module, 2006–2018). Disbelief sorts by party — Democrats converging on the scientific consensus, Republicans anchored at the folk default — exactly as on immigration."
+rd("evolution_partisan_gap.csv") |>
+  pivot_longer(c(dem_share, rep_share), names_to = "party", values_to = "share") |>
+  mutate(party = recode(party, dem_share = "Democrats", rep_share = "Republicans")) |>
+  ggplot(aes(year, share, color = party)) +
+  geom_line(linewidth = 1) + geom_point(size = 3) +
+  scale_y_continuous(labels = scales::percent, limits = c(0, 0.7)) +
+  scale_color_manual(values = c(Democrats = "#378ADD", Republicans = "#D85A30")) +
+  labs(x = "year", y = "share disbelieving humans evolved", color = NULL)
+```
+
+## Content neutrality: when Republicans are the out-group
+
+Both cases worked so far — immigration and evolution — have the *same* party, the Democrats, moving toward the credentialed-expert position. That pattern is observationally consistent with a simpler and less interesting claim than ours: that Democrats are merely more deferential to expert and scientific consensus. Our model asserts something content-free and stronger — that the converging out-group is *whichever* party's pole departs from the folk default, regardless of which party that is. The decisive evidence is a case in which the folk default is the Democratic-congenial position and the experts side with the Republicans; trade supplies one. Folk economics marks the protectionist, anti-foreign-trade intuition as the shared default [@caplan2007myth]; the experts hold the opposite, that trade raises aggregate welfare. On the ANES import-limits item, the party sitting at the protectionist folk default is *not* fixed — it switches (@fig-trade-flip). From 1988 through 2012, Democrats were the more protectionist party (the Republican–Democrat gap in favoring import limits ran from −3 to −11 points): the anti-market folk position was the Democratic one, and the expert-aligned, freer-trade side was Republican. By 2016 the gap had flipped to +13 points and by 2024 to +42, as the Trump-era Republican Party adopted the protectionist line and Democrats moved toward the economists. The party that holds the folk-economic error against the experts is therefore set by the structure of elite conflict, not by a standing disposition of one party to defer: before 2016, on a market belief, it is the *Republicans* who occupy the expert-aligned pole that the model assigns to the out-group. This is the content neutrality the immigration and evolution cases alone could not establish. We are precise about its limit: because trade tribalized only *after* the parties exchanged positions, its low-tribalization era (when Republicans were the expert-aligned side) is one in which sophistication corrects the folk error in *both* parties (the P2 regime, as in §6), so trade demonstrates content neutrality through the *direction and flip of the partisan gap* rather than through a sophistication-amplification test with Republicans as the converging side — the latter would require a market fact that is both expert-Republican-congenial and strongly tribalized, which we flag in the limitations as the remaining step.
+
+```{r}
+#| label: fig-trade-flip
+#| fig-cap: "Content neutrality. On the ANES import-limits item, the protectionist (folk-economic) default is held by Democrats from 1988–2012 and by Republicans after 2016: the party that departs from the experts is set by elite conflict, not by a fixed disposition to defer. Share favoring limits on imports, by party."
+rd("trade_content_neutrality.csv") |>
+  tidyr::pivot_longer(c(dem_protectionist, rep_protectionist), names_to = "party", values_to = "share") |>
+  dplyr::mutate(party = dplyr::recode(party, dem_protectionist = "Democrats", rep_protectionist = "Republicans")) |>
+  ggplot(aes(year, share, color = party)) +
+  geom_line(linewidth = 1) + geom_point(size = 2.6) +
+  scale_y_continuous(labels = scales::percent) +
+  scale_color_manual(values = c(Democrats = "#378ADD", Republicans = "#D85A30")) +
+  labs(x = "year", y = "share favoring limits on imports (folk/protectionist)", color = NULL)
+```
+
+## Cross-national scope: capture follows elite supply, not the number of parties
+
+The mechanism is built on the two-party United States, which raises a scope question: should fact-capture be weaker where many parties and coalition government diffuse the partisan signal? We test the conjecture with the ISSP 2013 National Identity module [@issp2013ni], which fields the *same* economic fact — whether "immigrants take jobs away from people born in [country]" — in twenty-six democracies, alongside a harmonized left–right party-family measure. For each country we take the left–right gap in the folk belief (the right bloc's rate of agreement minus the left's; @fig-issp). Three results follow, and the third is not the one we expected.
+
+First, the capture generalizes: the gap is positive — the right holds the folk belief more — in seventy-seven percent of the twenty-six countries. A truth-apt immigration fact carries an ideological signature across most democracies, not only in the polarized United States. Second, the naive scope conjecture *fails*: the gap is uncorrelated with party-system fragmentation (the effective number of parliamentary parties; *r* = +0.16, *p* = .44, the wrong sign for "weaker under multi-party systems"). Belgium, with eight effective parties, shows a larger gap than the two-party United States; Sweden, also highly fragmented, shows almost none. Multi-party systems do not capture the fact less.
+
+Third, what *does* track the gap is elite issue-supply. The left–right gap is roughly four times larger in countries with a salient anti-immigration party (mean 0.13) than in those without one (0.03; a difference that is statistically reliable, Welch *t* = 2.96, *p* = .01, and survives controlling for the number of parties, *p* = .006) — capture appears wherever an elite party *owns* the folk position, regardless of how many parties compete. We flag one important caveat: this moderator is plausibly *endogenous* to the very capture we measure, since a party's ownership of the anti-immigration position and the partisan sorting of the immigration fact are co-determined and may be two faces of one process rather than cause and effect. We therefore read the contrast as descriptive corroboration, not as an identified moderator. With that caveat, it refines the scope condition rather than confirming it, and in doing so it corroborates the paper's deeper claim: capture is driven from the elite level (the precedence result of §6), so it requires a party to carry the folk pole, not a particular number of parties. The United States is instructive precisely because it is *mid-ranked* (ninth of twenty-six) in 2013 — exactly what its own GSS series implies, since the US immigration gap was only about eight points in 2014 and reached thirty-three only by 2024. A single cross-national snapshot therefore compares countries at different points in their own tribalization, which is itself a caution we carry into the reading. The honest conclusion is that the identity mechanism is not confined to two-party systems, that it does not weaken with party number as we had conjectured, and that its cross-national footprint is set by whether elites supply a party to own the unverifiable claim.
+
+```{r}
+#| label: fig-issp
+#| fig-cap: "Cross-national scope (ISSP 2013, 26 democracies). Left–right gap on the 'immigrants take jobs' fact against party-system fragmentation (effective number of parliamentary parties). The gap is positive in most countries but is *uncorrelated* with the number of parties (r = +0.16, n.s.); it is larger where a salient anti-immigration party exists (orange). The US (two-party) is mid-ranked, consistent with its still-rising GSS trajectory in 2013."
+rd("issp_crossnational.csv") |>
+  mutate(`anti-immigration party` = ifelse(salient_antiimmig_party == 1, "salient", "none")) |>
+  ggplot(aes(enp, gap_right_minus_left, color = `anti-immigration party`)) +
+  geom_hline(yintercept = 0, color = "grey70") +
+  geom_point(size = 2.6) +
+  geom_text(aes(label = country), size = 3, vjust = -0.7, show.legend = FALSE) +
+  scale_color_manual(values = c(salient = "#D85A30", none = "#534AB7")) +
+  labs(x = "effective number of parliamentary parties (~2013)",
+       y = "right − left gap on 'immigrants take jobs'")
+```
+
+# Discussion
+
+The organizing claim is that economic belief under unverifiability runs in two regimes, and that an issue can move from one to the other within a generation. Where a claim is uncontested, citizens hold a shared folk-economic error that information and mechanism-explanation can move toward the experts [@meyers2020inducing; @meyers2023broad]. Where a claim is contested, information no longer converges belief: it carries the out-group toward the experts while leaving the in-group in place, so that more of it *widens* the partisan gap rather than closing it — because the obstacle is not a deficit of knowledge but a surplus of identity [@kahan2012polarizing; @sapienza2013economic]. The VOTER panel shows this transition is not merely a property of shifting aggregates but of individuals: the same people, no better able to check the claim than before, revised it into partisan line as the issue tribalized, and their prior partisanship forecast the revision more than their prior belief forecast their partisanship.
+
+We are deliberate about the epistemic status of the two-regime model relative to the findings. The descriptive results are the secure core, and they are novel on their own terms: a truth-apt, fixed-wording economic fact migrated into the partisan structure a matched preference already held (from nine to seventy-two percent of it), reaching value-cleavage magnitude; the same structure recurs on evolution, on trade through a directional party-flip, and across twenty-six democracies; and the partisan gap and the sophistication premium co-scale with elite tribalization. The formal model earns its keep by *organizing* these regularities into one gap equation and by sharpening the mechanism test — but its single genuinely derived prediction, the content-free claim that the converging out-group is whichever party departs from the folk default, is only partially borne out: the trade flip confirms it on the direction of the gap, but the sophistication-amplified version with Republicans as the converging side remains untested, and the folk-default anchoring is pinned partly by which party stayed put. We therefore present the model as an organizing lens rather than a validated structural object, read the mechanism as consistent with — not as identifying — asymmetric motivated reasoning against selective exposure, and assign the work of identification to the pre-registered experiment. The paper's claims, in short, are exactly as strong as the design: a demonstrated and general descriptive phenomenon, organized by a model whose deepest prediction awaits one more test.
+
+This is the answer to the question in the title. How do you convince someone of a claim they cannot check? It depends which regime they are in. On an uncontested claim, supply the mechanism: explanation moves belief toward the experts. On a contested one, information is the wrong tool; the only levers the theory implies are de-tribalization or a trusted in-group messenger who can carry an unverifiable fact across the partisan filter. We offer this last as a conjecture the theory licenses, not a finding the data establish — its test is the pre-registered experiment of Appendix E — and we note that partisan media plausibly act not as a competing cause but as the high-gain amplifier of the elite signal, consistent with the precedence result.
+
+The reach of the argument extends well beyond economics, and §7 has already shown it: the partisan capture of disbelief in evolution — a fact with no economic content whatever — reproduces every feature of the immigration result, down to the asymmetry and the sophistication amplification. The Time-Traveller's Problem is a general condition, not a feature of immigration or of dollars: it arises wherever a truth-apt claim is unverifiable from ordinary experience and contested by elites — the trajectory of the climate, the effects of public-health measures, the consequences of a distant war, the safety of a new technology. In each such domain the model predicts that belief will be governed by identity rather than evidence, that the governance will be asymmetric and sophistication-amplified, and that which facts are captured will track the unverifiable and the tribalizing; the evolution case is one such domain already in hand, and it behaves exactly as predicted. Economics is merely the cleanest laboratory — it supplies a credentialed expert benchmark and long runs of fixed-wording items — but the phenomenon it exposes is a property of belief under unverifiability as such. Naming it is part of the contribution: fact capture, under the Time-Traveller's Problem, is a recurring mode by which mass publics come to hold party-sorted beliefs about things they cannot check, and it should be found, and can be predicted, wherever those conditions recur.
+
+The finding also refines the rationality debate. The public is not uniformly irrational in the manner of rational irrationality [@caplan2007myth]; it is *conditionally* so — rational-as-identity-management precisely where evidence cannot bind, and most so among those best able to reason. And it issues a caution to the civic-knowledge tradition: on contested facts, political knowledge does not bring the parties together but drives them apart, correcting the out-group while leaving the in-group unmoved. The remedy for misinformation cannot simply be more information: on a captured fact, more information sharpens the partisan divide even as it pulls one side toward the experts.
+
+# Limitations and scope
+
+We state the design's boundaries plainly, as scope conditions on what the evidence licenses rather than as grounds to discount it. The precedence of elite over mass polarization is an instance of issue evolution, framed as confirmation not discovery — and it is estimated on the immigration *preference*, which has the biennial waves a lead–lag requires, not on the five-wave fact; that facts undergo *elite-led* issue evolution is therefore an inference from the preference's precedence, the cross-sectional gradient, and the fact's emergence first among the sophisticated (§7), not a lead–lag estimated on the fact itself. The mechanism is read as *consistent with* asymmetric motivated reasoning: the sophistication interaction adjudicates against an information-deficit account, and three further steps narrow the divergent-diets and confound alternatives (the party-by-knowledge interaction on the fact survives controlling for political attention; it survives party-by-racial-resentment and party-by-authoritarianism — the immigration analog of the religiosity control that dissolved the evolution sophistication effect, §7; and political knowledge moves only the out-group toward the experts, not the in-group, as truth-tracking would), but no observational design *completely* separates identity-protective cognition from party-correlated exposure (§5), a separation the pre-registered experiment is built to finish. The behavioral-knowledge interaction on the fact was first estimated on a single 2024 cross-section, but it now replicates out of sample: the specification curve establishes its robustness within 2024 to party coding, controls, weighting, and the belief cutpoint; the GSS education trajectory and the CES corroborate the mechanism cross-survey; and in the ANES cumulative file the same party×sophistication amplification of the take-jobs fact appears in 2008, 2012, and 2016 using the interviewer's information rating in place of the behavioral battery — and is absent in pre-tribalization 2004, as the conditional law requires (§7). What remains genuinely owed is the narrower step of reproducing the interaction with the same behavioral-knowledge battery and fact item in a second survey. Verifiability is a theoretical lens, not an identified moderator, and we are blunt that it does no within-sample identifying work: every studied claim is low-verifiability, so the design identifies the *tribalization* comparative statics (P2–P5) while verifiability enters only as a scope condition certified by the index. Indeed, within our three claims verifiability does not even order the capture — immigration is the most checkable (CVI 6 of 12) yet the most captured — which is consistent with the model (capture runs through the $g(T)$ tribalization channel, not the $\alpha(v)$ channel, once all claims are unverifiable enough) but means the $\alpha(v)$ term and the Time-Traveller framing it motivates are, empirically, an organizing scope condition rather than a tested moderator. The verifiability half-life is accordingly held apart from the numbered predictions — stated but untested here, for want of within-claim variation in checkability — with the prospective AI study (Appendix E), where employment effects grow observable as the technology deploys, designed to supply exactly that variation (H4). The design is observational. We make no causal claim about the direction between the fact and the matched *preference*; on the prior question of whether party leads the fact or the fact leads party, the VOTER panel's cross-lagged estimates point to party leading the within-person change in the belief (@sec-panel), though cross-lagged models recover lead–lag structure rather than strict causation, and the panel's belief item is a broader societal-contribution judgment than the verbatim economic fact. The over-time partisanization is shown directly on two facts from different domains — whether immigrants take jobs and, outside economics, whether humans evolved (§7) — so it is not a fact about one issue. We are nonetheless plain about how far this generality currently reaches. Within economics, the longitudinal evidence rests on two framings of a single underlying belief about immigration and the economy (`immjobs` and `immameco`, correlated at .95), not on two independent economic facts; the trade analog is not estimable (the GSS fielded its trade-and-jobs item only once), so the economic generality rests further on the cross-sectional gradient across three issues, on convergent evidence that partisan economic perceptions swing with the president's party [@bartels2002beyond], and on a registered forward prediction. The one *fully* independent domain, evolution, is a shorter series (seven waves to 2018) measured by education rather than the behavioral knowledge battery. The phenomenon is thus general in principle, and shown in two domains within the US; its cross-national breadth we now document directly with the ISSP (§7) — the immigration fact carries a left–right signature in most democracies — leaving the AI series, as it matures, as the remaining over-time extension. A distinct limit concerns *content*, not breadth, and it is the most consequential open test. In both fully-worked cases — immigration and evolution — the party that moves toward the credentialed-expert position is the Democratic one, so the evidence as it stands is observationally consistent with a simpler and less novel story in which Democrats are merely more deferential to expert and scientific consensus. The structural model claims something stronger and content-free: the converging out-group is whichever party's pole departs from the folk default, whichever party that is. The decisive test is a *market* fact whose folk anti-market default is Democratic-congenial and whose expert verdict is Republican-congenial — the employment effect of the minimum wage, rent control, the gains from trade — on which the model predicts that *Republicans* become the converging out-group. We establish this content neutrality at the level of the partisan gap's *direction*: on the ANES import-limits trade item (§7), the protectionist folk default is held by Democrats from 1988 through 2012 and by Republicans only after 2016, so before the Trump-era realignment the expert-aligned, freer-trade party on a market belief is the Republicans — the opposite party from immigration and evolution, which a fixed "Democrats defer to experts" account cannot accommodate. What trade cannot supply is the *sophistication-amplified* form of the test with Republicans as the converging side, because trade tribalized only after the parties exchanged positions, leaving its Republican-expert-aligned era in the low-tribalization regime where information corrects both parties. A market fact that is simultaneously expert-Republican-congenial and strongly tribalized — rent control, or the minimum wage's employment effect, with repeated public microdata and a sophistication measure — therefore remains the cleanest single extension; we flag it as such, and note that if the sophistication amplification failed to appear there, that too would be informative and would narrow the claim. The expressive-responding objection is met observationally but not experimentally, though the panel's durable nine-year within-person reversals are difficult to read as *momentary* cheerleading — durability is not itself sincerity, but it narrows the objection to its durable-expression form, which only the incentivized experiment can finally settle. The verifiability index is double-coded (Krippendorff's $\alpha = 0.88$; Appendix A), and certifies the design's premise rather than serving as a regressor. Finally, on the scope of the two-party setting: we had conjectured that the identity term should be weaker under multi-party, coalition systems, and the ISSP 2013 cross-national data (§7) let us put the conjecture to the test. It is not supported — the left–right gap on the immigration fact is uncorrelated with the number of parties (*r* = +0.16, n.s.) — but the capture itself generalizes (a right-more-folk gap in seventy-seven percent of twenty-six democracies) and tracks whether an elite party owns the anti-immigration position rather than the size of the party system. We therefore revise the condition rather than merely state it: the mechanism is not confined to two-party systems and does not weaken with party number; what it requires is an elite party to carry the folk pole, which is consistent with the precedence result. The one-shot cross-section also compares countries at different stages of their own tribalization — the United States is only mid-ranked in 2013, matching its GSS trajectory — so the cross-national reading is a snapshot rather than a dynamic test, and an over-time cross-national panel is the natural next step. None of these is fatal; each is a boundary the design draws openly, and several are the openings that the conclusion and the pre-registered designs of Appendix E turn into an agenda for future work.
+
+# Conclusion
+
+A truth-apt belief about the economy, its wording held fixed, came to sort by party nearly as strongly as a taste — and did so fastest among the citizens best equipped to know better. Followed as individuals across a decade, the same citizens revised a broad immigration-impact belief into partisan line, their party leading the change rather than trailing it. When a claim cannot be checked, belief tracks the identity of its source rather than the content of the message: the Time-Traveller's Problem. The next fact to sort is, the theory predicts, already visible in the data on artificial intelligence. Whether the discipline can find ways to carry unverifiable facts across the partisan filter — through mechanism, through messenger, through de-tribalization — is the question this diagnosis leaves for the work to come.
+
+# References {.unnumbered}
+
+::: {#refs}
+:::
+
+\appendix
+
+# Appendix A — Claim Verifiability Index
+
+Each studied claim is scored 0–3 on four dimensions and summed to a 0–12 index; the anchors for each level are:
+
+| Dimension | 0 | 1 | 2 | 3 |
+|----|----|----|----|----|
+| Temporal lag | resolves in \< 1 yr | 1–3 yr | 3–10 yr | \> 10 yr |
+| Counterfactual dependence | direct comparison available | weak counterfactual | strong counterfactual required | inherently unobservable counterfactual |
+| Attributional diffuseness | single clear cause | few competing causes | many competing causes | causally over-determined |
+| Personal unobservability | verifiable from own experience | partly observable | rarely observable | never personally observable |
+
+The index certifies that the studied claims are genuinely difficult to verify — the premise of the design — and is not used as a regressor; the studied claims cluster at the high end (mean 9.5 on the 0–12 scale; @tbl-cvi). Following standard practice for content-analytic measures [@krippendorff2004content], all seventeen claims were scored independently by a second coder applying the same rubric. Agreement is high: across the sixty-eight dimension-level ratings the two coders agree exactly 88 percent of the time and never differ by more than one point, giving Krippendorff's $\alpha = 0.88$ on the ordinal dimensions (and $\alpha = 0.98$ on the summed index) — comfortably above the pre-registered $\alpha \geq 0.67$ threshold for adequate agreement (the two codings are in `data/cvi_two_coders.csv`; the instrument is `data/cvi_coding_sheet.md`). The CVI is not used as a moderator because the studied claims lack the within-claim variation in verifiability that identifying a verifiability effect would require (the verifiability half-life held apart from the numbered predictions in the theory section).
+
+```{r}
+#| label: tbl-cvi
+#| tbl-cap: "Claim Verifiability Index scores (two independent coders; Krippendorff's α = 0.88 ordinal, 0.98 on totals)."
+rd("cvi_scores.csv") |> kable(digits = 0)
+```
+
+# Appendix B — Robustness
+
+The headline mechanism result is robust to specification, weighting, and coding.
+
+```{r}
+#| label: tbl-spec-full
+#| tbl-cap: "Full specification curve: the party×knowledge interaction (log-odds) and p-value across all 24 specifications."
+rd("anes_spec_curve.csv") |>
+  transmute(belief = dc, party = pc, controls = ctrl, weighting = wtopt,
+            coef = round(coef, 3), p = signif(p, 2)) |>
+  kable()
+```
+
+The procedure follows specification-curve and multiverse practice [@simonsohn2020specification; @steegen2016multiverse]: rather than defend a single model, we report the full distribution of estimates across defensible analytic choices. Three points follow. First, every specification yields a positive, significant interaction (@fig-multiverse and the table above), so the result is not an artifact of a particular control set or coding. Second, the estimate is essentially unchanged with the survey weights removed, so it is not an artifact of the weighting. Third, the fact–preference coupling holds for both the older levels item (`letin1`) and the newer reduce item (`letin1a`) (@fig-coupling), so the stable-coupling result is not an artifact of item wording. Throughout, each survey is analyzed with its own native design weights; no single weight is pooled across surveys.
+
+Two further caveats. The precedence test rests on eleven biennial observations; its lead–lag correlation and Granger-style coefficient are reported as suggestive temporal ordering, not as a powered time-series result, and we do not subject so short a series to unit-root or cointegration testing, which it cannot support. In place of asymptotic inference we use a time-shift randomization that respects autocorrelation: we correlate the public gap against the elite series displaced by every lag in a wide window and rank the observed ten-year alignment within that distribution. The lag-ten correlation falls near the ninetieth percentile (*p* ≈ .10) — consistent with elites leading, but conservative enough that we claim only ordering, not a precise lag or an effect size. This randomization is the appropriate small-sample replacement for the asymptotic Granger *p*, and it is deliberately the weaker of the two figures we report. Second, the `immjobs` item was fielded in 1996, 2004, 2014, 2022, and 2024 — not in 2021 — so the GSS's partial shift to web administration in 2021 does not enter the capstone series. The one notable irregularity, the 2022 GSS education split, is visible in @fig-mechanism and does not affect the design-based interaction or the cross-survey ANES confirmation. Across the five capstone waves the `immjobs` item was administered to comparable, randomly assigned ballot subsamples, with analytic Republican and Democratic counts per wave reported in @tbl-fact-gap (ranging from roughly 480 to 960 per party); the trend is not an artifact of the irregular spacing of fielding years, and — as §6 notes — the split-ballot structure is precisely why we retire the earlier within-person "fusion" reading in favor of the partisan-loading result.
+
+## Wording robustness: a second immigration-economy fact
+
+A natural worry is that the partisanization is an artifact of the specific phrase "immigrants take jobs." It is not. The GSS fields a second, differently framed claim about the same underlying fact — whether immigrants are, on balance, good for the American economy (`immameco`) — in 1996, 2004, 2014, and 2024. Its partisan gap follows an all-but-identical path (@fig-wording): flat through 2004, opening by 2014, and reaching twenty-two points by 2024, driven by the same one-sided movement — the share of Democrats calling immigrants good for the economy rises from 68 to 94 percent while Republicans barely move. The two fact-item gap trajectories correlate at *r* = .95 across the four common years. The capture is a property of the belief about immigration and the economy, not of any one item's wording.
+
+```{r}
+#| label: fig-wording
+#| fig-cap: "Wording robustness: the partisan gap on a differently worded immigration-economy fact (whether immigrants are *not* good for the economy, immameco) tracks the gap on 'immigrants take jobs' (r = .95 across the four common years; GSS)."
+rd("fact_wording_robustness.csv") |>
+  ggplot(aes(year, gap, color = item, shape = item)) +
+  geom_hline(yintercept = 0, color = "grey75") +
+  geom_line(linewidth = 1) + geom_point(size = 2.6) +
+  scale_y_continuous(labels = scales::percent) +
+  scale_color_manual(values = c("immigrants take jobs" = "#D85A30",
+                                "immigrants not good for economy" = "#534AB7")) +
+  labs(x = "year", y = "Rep − Dem partisan gap", color = NULL, shape = NULL)
+```
+
+## Mechanism specificity: knowledge, not its correlates
+
+A natural objection to the mechanism is that "political knowledge" is merely a proxy for education or ideology, so the knowledge×party interaction would vanish once those interactions are included. It does not. The interaction retains essentially its full magnitude and high significance controlling for party×education and party×ideology, while both of those interactions are themselves null — it is specifically political sophistication, not its correlates, that amplifies the sorting.
+
+```{r}
+#| label: tbl-knowledge-controls
+#| tbl-cap: "Party×knowledge interaction on the immigration fact, net of party×education and party×ideology (ANES 2024)."
+rd("anes_knowledge_controls.csv") |> kable(digits = 3, col.names = c("Model", "party×knowledge", "p", "n"))
+```
+
+A sharper version of the objection names a specific rival engine. For evolution we reported, against our own interest, that the sophistication signature did not survive religiosity: the party×education interaction on disbelief fell to non-significance once church attendance and biblical literalism and their party interactions entered (§7), because disbelief in evolution is largely structured by religiosity. The immigration analog of that confound is racial resentment (or authoritarianism): each is correlated with both party and political sophistication and is the natural alternative driver of immigration sorting. We therefore subject the knowledge×party interaction on the fact to the same kind of test, controlling for party×racial-resentment and party×authoritarianism (the four-item ANES batteries; racial resentment runs, as expected, far higher among Republicans). Unlike the evolution case, it survives: the interaction falls only from a log-odds of 0.53 to 0.46 with party×racial-resentment, to 0.41 with party×authoritarianism, and to 0.38 with both, remaining significant at p < .01 throughout (@tbl-resentment-controls). The amplification of immigration-fact sorting by political knowledge is not racial resentment, or authoritarianism, wearing a sophistication mask — which is the most important thing the contrast with evolution establishes, and the reason we ran the test that evolution failed.
+
+```{r}
+#| label: tbl-resentment-controls
+#| tbl-cap: "The party×knowledge interaction on the immigration fact survives party×racial-resentment and party×authoritarianism (ANES 2024; survey-weighted logit, cluster-robust by PSU) — unlike the evolution sophistication effect, which did not survive its religiosity analog."
+rd("anes_resentment_controls.csv") |> kable(digits = 3, col.names = c("Model", "party×knowledge (log-odds)", "p", "n"))
+```
+
+The divergent-information-environments account is the harder rival, because it predicts the same one-sided amplification through *exposure* rather than cognition (§5, §7). We cannot identify against it observationally, but we can test whether the readiest content-relevant proxy absorbs the interaction. Mainstream-media trust is sharply party-stratified (Democrats credit traditional news far more than Republicans do) and is the natural channel through which divergent diets would operate. Controlling for party×trust-in-media leaves the party×knowledge interaction essentially intact — 0.53 to 0.49 — and adding party×political-attention does no more (@tbl-mediadiet). This narrows the exposure account: the amplification is not reducible to *which* sources a partisan trusts or *how much* politics they follow. It does not close it, since neither measure captures the content of consumption directly; that separation is left to the experiment.
+
+```{r}
+#| label: tbl-mediadiet
+#| tbl-cap: "The party×knowledge interaction on the immigration fact survives controlling for party×media-trust, a content-relevant exposure proxy (ANES 2024; survey-weighted logit, cluster-robust by PSU). It narrows but does not close the divergent-diets account."
+rd("anes_mediadiet_controls.csv") |> kable(digits = 3, col.names = c("Model", "party×knowledge (log-odds)", "p", "n"))
+```
+
+## The mechanism at scale (CES)
+
+The asymmetric amplification is not an artifact of the ANES or of modest samples. In the Cooperative Election Study it replicates on the matched immigration *preference* at roughly thirty-eight thousand respondents per survey, across two years and three differently worded restrictionist items (@tbl-ces). On the cleanest item — support for reducing legal immigration by half, where neither party sits near a floor or a ceiling — education pulls Democrats toward openness about twice as steeply as Republicans (Democrats from 34 to 18 percent restrictionist across the college line, Republicans from 68 to 58), so the partisan gap *widens* with schooling and the party-by-education interaction is +0.38 (*p* \< 10⁻¹⁵). The 2024 items repeat the pattern (interactions +0.52 and +0.80), the only caveat being that Republican support for a border wall is near its ceiling, which mechanically limits in-group movement there. Two points follow. First, the mechanism the paper identifies on the fact — capacity recruited to enact the party line, moving the out-group while the in-group holds — is real and large beyond any sampling doubt. Second, the captured fact, having converged on the preference's partisanship (§6), is now driven by the very same machinery that governs the preference: the assimilation is complete in mechanism as well as in level. We are explicit about the boundary of this check, lest it be read for more than it is: it uses *education* on a *preference*, not the behavioral knowledge battery on the fact, so it confirms a related quantity rather than the headline one. Its scale, however, lets us take one observational step on the cognition-versus-exposure question of §5, which smaller samples cannot. If the amplification were merely party-correlated *exposure* — the more attentive of each side absorbing more of their own diet — then controlling for political attention should absorb it. It does not. Adding a party-by-political-attention interaction *halves* the party-by-education interaction but leaves it firmly significant (from +0.36 to +0.18 in the same respondents, *p* \< .001): education amplifies the partisan gap beyond what differential attention explains. This is not the incentivized experiment, and it does not isolate cognition completely, but it is more than a concession that exposure and capacity are indistinguishable — here, at n ≈ 38,000, they partly separate, and the part that survives belongs to capacity, not exposure. The same control run on the *headline* pairing — political knowledge and the fact, in the ANES — tells the same story (§7): the party-by-knowledge interaction falls only from +0.51 to +0.40 (*p* = .001) once party-by-attention is included. The CES contributes scale; the ANES contributes directness, applying the test to the very quantity the mechanism claim is about.
+
+```{r}
+#| label: tbl-ces
+#| tbl-cap: "The mechanism at scale (CES 2022–2024, n ≈ 38,000 each): the partisan gap on immigration restriction widens with education, driven by the out-group, across three items. Shares are the restrictionist share; the interaction is party×college (log-odds)."
+rd("ces_mechanism.csv") |>
+  transmute(Year = year, Item = item,
+            `Dem (no coll → coll)` = paste0(dem_noncol, " → ", dem_col),
+            `Rep (no coll → coll)` = paste0(rep_noncol, " → ", rep_col),
+            `party×college` = interaction, p = p, n = n) |>
+  kable()
+```
+
+## Behavior, against expressive responding
+
+Expressive responding [@bullock2015partisan; @prior2015serious] holds that partisans may report beliefs they do not hold to cheer their side. The observational design cannot fully exclude this — the clean test is the deferred incentivized experiment (Appendix E) — but the factual belief carries independent political weight that pure cheerleading on a single survey item would not produce. In ANES 2024 it predicts consequential behavior, 2024 presidential vote and border-wall support, *net of party identification and political knowledge*:
+
+```{r}
+#| label: tbl-behavior
+#| tbl-cap: "The factual belief predicts behavior net of party and knowledge (ANES 2024; odds ratios from survey-weighted logits)."
+rd("anes_behavior.csv") |> kable(col.names = c("Outcome", "Fact OR", "p", "n"))
+```
+
+The sharpest form of the objection is that "net of party" under-models identity when party is only a three-category measure. The result does not depend on that coarseness. Re-estimating the fact's effect on presidential vote on a common sample while progressively adding seven-point party identification, then seven-point ideology, then knowledge, the odds ratio falls from roughly nine but stabilizes just above six and stays overwhelmingly significant (@tbl-behavior-controls): the belief predicts the vote at an odds ratio of about 6.1 net of a full identity battery. A report that tracked nothing but partisan identity should be largely absorbed by these controls; it is not.
+
+```{r}
+#| label: tbl-behavior-controls
+#| tbl-cap: "The factual belief predicts presidential vote net of progressively richer identity controls (ANES 2024; odds ratio on the fact, survey-weighted logit)."
+rd("anes_behavior_controls.csv") |>
+  kable(col.names = c("Identity controls", "Fact OR", "p", "n"))
+```
+
+A belief that predicts the vote net of a rich identity battery shows that it travels with consequential partisan commitments — but, since a vote report is itself a self-report open to the same expressive pressures as the belief report, this does not by itself establish sincerity. Only the incentivized-accuracy experiment (Appendix E) can partition the sincere from the expressive component.
+
+## The within-person panel (VOTER): cross-lagged direction and change-score
+
+The within-person capture result (@sec-panel) rests on the Views of the Electorate Research (VOTER) panel, which re-interviewed the same national sample across 2011–2020; the belief item asks whether immigrants "mostly make a contribution to American society" or are "mostly a drain," coded so that higher values are the anti-immigrant (folk) direction, and party is the seven-point identification at each wave. Both variables are standardized within the analysis sample.
+
+The headline estimate is the random-intercept cross-lagged panel model (RI-CLPM) of @hamaker2015critique, fit by maximum likelihood on the complete four-wave sample (2011, 2016, 2018, 2020; n = 2{,}008 full-participation respondents; RMSEA = 0.067). A pair of random intercepts absorbs each respondent's stable trait level in party and in belief, so the cross-lagged paths describe *within-person* deviations rather than between-person differences — the correction the two-wave CLPM cannot make. Cross-lags are constrained equal across waves (a conservative simplification given the unequal 5/2/2-year spacing). The within-person party→belief path (0.40) exceeds the belief→party path (0.12), and a nonparametric bootstrap of the difference (300 resamples) places it at 0.28 with a 95% interval of [0.19, 0.38] that excludes zero in every resample (@tbl-voter-riclpm). Two simpler estimators agree: the ordinary two-wave standardized CLPM (2011→2020) gives party→belief 0.33 versus belief→party 0.20, and a change-score regression of the 2011→2020 belief change on 2011 party — which differences out each respondent's baseline — gives β = 0.12 (p < .001). That the asymmetry is *larger*, not smaller, once trait variance is partialled out is the reverse of what an artifact-of-stable-dispositions reading predicts.
+
+```{r}
+#| label: tbl-voter-riclpm
+#| tbl-cap: "Random-intercept cross-lagged panel model on the VOTER panel (four waves 2011–2020, standardized; RI-CLPM separates within-person dynamics from stable between-person traits). The within-person path from party to the later belief is more than triple the reverse path, and the difference is significant by bootstrap."
+rd("voter_riclpm.csv") |>
+  kable(col.names = c("Parameter", "Estimate", "SE", "p", "Note"))
+```
+
+The complementary descriptive trajectory (@fig-voter) and the sorting summary — party–belief alignment rising from 74% to 83%, with two-thirds of the 2011-misaligned converging by 2020 — together with the two-wave CLPM and change-score robustness are written by `R/17_voter_panel.R` to `voter_within_person_gap.csv`, `voter_cross_lagged.csv`, `voter_riclpm.csv`, and `voter_sorting.csv`. The RI-CLPM is reproducible in R via `lavaan` (model syntax in `R/17_voter_panel.R`); the committed `voter_riclpm.csv` records the estimates this manuscript renders.
+
+# Appendix C — Reproducibility
+
+The analysis is fully scripted and version-pinned. From the repository root, `source("setup.R")` restores the package versions recorded in `renv.lock`; `Rscript run_all.R` then runs `R/01`–`R/16` followed by the figure script, writing derived aggregates to `data/processed/`. A fixed seed (`20260616`) is set in `run_all.R`. This manuscript renders its tables and figures directly from the committed aggregates in `data/processed/`, so the document and the analysis cannot diverge; the aggregates are non-identifiable, allowing every exhibit to be rebuilt without the restricted microdata. All estimation was performed in R 4.6.0; design-based inference uses the `survey` package [@lumley2004analysis], with `tidyverse` for data manipulation and `haven` for survey-file import. Exact package versions are pinned in `renv.lock`; the public repository (with the commit hash recorded in the released version) holds the scripts, the lockfile, the committed aggregates, and this manuscript source. A clean run reproduces the following.
+
+| Script | Object | Expected value |
+|----|----|----|
+| 01 | cleaned expert panel | 753 economist × sub-question rows |
+| 02 | public–expert gap; micro model | AI gap +0.45; college OR 0.82 |
+| 03 | Claim Verifiability Index | range 5–12, mean 9.5; Krippendorff's α = 0.88 |
+| 04 | public–expert gaps | AI +0.45, trade +0.36, immigration +0.39 |
+| 05 | tribalization gradient | party OR 1.04 → 1.70 → 3.79 |
+| 06 | composition control | party×era OR 3.38; education×era null |
+| 07 | precedence | lag-10 r = 0.92; Granger β = 0.72, p = .063 |
+| 08 | partisanization (capstone) | gap −0.03 → +0.33; trend r = .92, p = .03 |
+| 09 | mechanism (GSS) | gap emerges among graduates; 98% Democratic convergence |
+| 10 | mechanism (ANES) | party×knowledge +0.51, p \< .001 |
+| 11 | robustness | multiverse 100%/100%; knowledge survives education+ideology controls |
+| 12 | convergence + behavior | fact gap 9% → 72% of preference; fact predicts vote (OR 7.6) |
+| 13 | conditional law + descriptives | amplification: immigration + / automation null / AI − |
+| 14 | sorting benchmark | immigration fact gap 33 pts ≈ guns/gay rights/death penalty |
+| 15 | generality (evolution) | disbelief gap +14 → +24 pts; party×education +0.59, p = .001 |
+| 16 | mechanism at scale (CES) | party×education +0.38 to +0.80 on immigration restriction, n ≈ 38k |
+| 17 | within-person capture (VOTER panel) | drain-belief gap +47 → +62 pts; RI-CLPM within-person party→belief 0.40 \> belief→party 0.12 (diff 0.28, boot CI [0.19, 0.38]) |
+| 18 | out-of-sample mechanism (ANES CDF) | party×info on take-jobs fact: +0.39/+0.40/+0.52 (2008/12/16), null 2004 |
+| 19 | content neutrality (ANES trade) | protectionist-default party flips: Rep−Dem gap −0.08 (pre-2012) → +0.42 (2024) |
+| 20 | cross-national scope (ISSP 2013) | right-more-folk gap in 77% of 26 countries; corr(ENP, gap) = +0.16 (n.s.) |
+| 21 | structural signature (ANES CDF + elite series) | gap & sophistication premium both ~0 in 2004, co-rise with T; corr +0.86/+0.91 |
+
+# Appendix D — Measurement: variables, coding, and question wording
+
+## D.1 Matched pairs and question wording
+
+Each folk claim pairs a public-opinion item with the economic experts' verdict on the same causal claim, framed so that public and expert agreement point the same way. The pairs are *conceptual* matches, not identical wordings: the expert items use precise technical language and the public items are deliberately broad. The AI pair is the closest — a belief about the same outcome on both sides — while the trade and immigration pairs match the public folk belief to the experts' verdict on a closely related policy-causal claim. We treat the trade and immigration pairs as illustrative context and place the inferential weight on the individual-level and over-time analyses of the public items themselves. Verbatim wordings:
+
+| Pair | Expert claim (IGM / Kent A. Clark Center, verbatim) | Public item |
+|----|----|----|
+| AI → jobs | "Use of artificial intelligence over the next ten years will lead to a substantial increase in the unemployment rates in advanced countries." | Pew W152 `AIJOBS_W152`: "Thinking about the U.S. over the next 20 years, do you think that artificial intelligence (AI) will lead to \[more / fewer / about the same number of\] jobs?" (folk = "fewer") |
+| Trade → jobs | "If all of the 'Seven actions to protect American workers' in President-elect Trump's 100-day plan are enacted, it will more likely than not improve the economic prospects of middle-class Americans over the next decade." | GSS `moretrde`: "(More) international trade leads to fewer jobs in the USA" (folk = agree) |
+| Immigration → jobs | "Requiring most green card applicants to apply for permanent residency from overseas would lead to a substantial reduction in the numbers of skilled immigrants in the US." | GSS `immjobs`: "Immigrants take jobs away from people born in America" (folk = agree); ANES `V242228` (see D.3) |
+
+The immigration benchmark is the most indirect of the three and warrants an explicit caveat. No IGM/Kent A. Clark Center item asks economists the verbatim folk claim, so we take the expert benchmark as the complement of the panel's near-unanimous agreement (97 percent) that curtailing green cards would *reduce* the number of skilled immigrants — a verdict that treats immigrants, including the highly skilled, as an economic asset rather than a cost. The implied share endorsing the folk premise that immigrants take jobs is its complement, roughly three percent, which aligns with the National Academies' consensus that immigration does not reduce native employment on net [@nas2017immigration]. We are explicit that this inversion is an approximation carrying no inferential weight: the paper's claims about immigration rest entirely on the over-time and individual-level analyses of the public `immjobs` item, not on the constructed benchmark.
+
+## D.2 Variable coding
+
+| Survey | Variable | Item label | Coding |
+|----|----|----|----|
+| GSS | `immjobs` | immigrants take jobs away (5-pt agree–disagree) | folk = 1 if (strongly) agree (≤ 2) |
+| GSS | `letin1` | number of immigrants should be (5-pt) | restrictionist = 1 if reduce (≥ 4) |
+| GSS | `letin1a` | number of immigrants nowadays should be (5-pt) | restrictionist = 1 if reduce (≥ 4) |
+| GSS | `moretrde` | more trade, fewer US jobs | folk = 1 if agree (≤ 2) |
+| GSS | `partyid` | political party affiliation (0–7) | Democrat ≤ 2, Republican ≥ 4 |
+| GSS | `degree` | highest degree (0–4) | college = 1 if bachelor+ (≥ 3) |
+| GSS | `wtssall` / `wtssps` | person (post-stratification) weight | analysis weight |
+| Pew W152 | `AIJOBS_W152` | AI → more / fewer / same jobs | folk = 1 if "fewer" |
+| Pew W27 | `ROBJOB4B_W27` | automation → people struggle to fill their time | folk = 1 if "likely" |
+| Pew | `F_PARTYSUM_FINAL` | party summary | Republican vs Democrat |
+| Pew | `F_EDUCCAT` / `F_EDUCCAT_FINAL` | education category | college = 1 if highest category |
+| ANES | `V242228` | immigration likely to take jobs (4-pt) | fact = 1 if extremely/very likely |
+| ANES | `V241227x` | party ID summary (1–7) | Democrat 1–3, Republican 5–7 |
+
+## D.3 ANES 2024 knowledge battery
+
+The dependent variable for the cross-survey mechanism test is `V242228` (post-election): "How likely is it that recent immigration levels will take jobs away from people already here?", coded 1 if "extremely" or "very" likely, 0 if "somewhat" or "not at all" likely. The political-knowledge index sums four items, each scored correct = 1:
+
+| Variable | Item | Correct answer |
+|----|----|----|
+| `V241612` | Years in a full U.S. Senate term | 6 |
+| `V241613` | Category of least federal spending | foreign aid |
+| `V241614` | Party with most House members before the 2024 election | Republicans |
+| `V241615` | Party with most Senate members before the 2024 election | Democrats |
+
+The two majority items are scored to the **pre-November-2024 Congress** (Republican House, Democratic Senate). Estimation uses the post-election design: weight `V240107b`, primary sampling unit `V240107c`, stratum `V240107d`. ANES includes a "catch" knowledge item, and some respondents may look answers up; both work *against* detecting a knowledge effect, so neither threatens the positive interaction reported.
+
+# Appendix E — Pre-registered future experiment
+
+The cleanest test of the mechanism — and the decisive adjudication of sincere identity-protective cognition versus expressive responding [@bullock2015partisan; @prior2015serious] — is experimental, and is deferred here for IRB and affiliation reasons rather than as an oversight. The planned design has three arms: (i) a **de-tribalization** arm presenting the expert consensus either stripped of partisan cues or delivered by a co-partisan ("trusted in-group messenger") source; (ii) a **mechanism-explanation** arm following @meyers2020inducing; and (iii) an **incentivized-accuracy** arm following @prior2015serious, paying for correct answers to partition the gap into sincere and expressive components. It tests three hypotheses, each mapped to an arm: **H1 (de-tribalization)** — removing partisan cues, or sourcing the consensus from a co-partisan, narrows the out-group's gap on the fact; **H2 (mechanism vs. information)** — eliciting a causal explanation moves belief toward the experts more on uncontested than on contested claims; **H3 (sincerity)** — accuracy incentives reduce but do not eliminate the partisan gap. Anticipating a treatment effect of 8–12 percentage points on the gap, roughly 500 respondents per cell (≈ 2,000 total) yields 80% power at $\alpha = .05$; the pre-registration will fix the analysis plan, covariates, and exclusion rules before data collection. The predictions follow directly from the two-regime model: information and mechanism explanation move belief in the folk regime, whereas only de-tribalization or a trusted in-group source moves it in the identity regime. Separately, the model's *forward* prediction — that AI-and-employment beliefs, weakly sorted in 2024, will partisanize as the issue tribalizes — is registered prospectively (`paper/preregistration.md`), so that the next fact to sort tests the theory in advance rather than in hindsight.

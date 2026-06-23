@@ -1,0 +1,5 @@
+model,party_knowledge_logodds,p_value,n
+baseline,0.526,5e-06,4402
++ party x trust in news media,0.493,3.7e-05,4395
++ party x trust in traditional media,0.521,2.7e-06,4380
++ party x both media-trust measures,0.492,1.9e-05,4373

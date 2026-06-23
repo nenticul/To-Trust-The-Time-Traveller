@@ -1,0 +1,3 @@
+party,share_low_know,share_high_know,knowledge_logodds,p_value,n
+Democrats,0.172,0.071,-0.489,7.3e-06,2323
+Republicans,0.508,0.533,0.037,0.36,2079

@@ -1,0 +1,5 @@
+control_set,fact_OR,p_value,n
+Party (3-cat),8.71,5.4000000000000005e-27,3327
++ 7-pt party ID,6.87,2.6999999999999997e-25,3327
++ 7-pt ID + ideology,6.38,2.2e-18,3327
++ 7-pt ID + ideology + knowledge,6.1,7.9e-18,3327

@@ -1,0 +1,5 @@
+model,party_era_logodds,p_value,n
+baseline,0.271,0.0073,3077
++ education x era,0.262,0.01,3077
+"+ race, ethnicity, nativity x era",0.37,0.071,1979
+"+ age, region x era (full)",0.328,0.11,1976

@@ -1,0 +1,14 @@
+finding,estimate,inference
+Public-expert gap (immigration),+39 pts,public 42% vs expert 3%
+Party OR -- automation (low T),1.04,"[0.84, 1.30]"
+Party OR -- AI (mid T),1.70,"[1.44, 2.01]"
+Party OR -- immigration (high T),3.79,"[2.91, 4.93]"
+Composition: party x era OR,3.38,"[2.47, 4.63]"
+Composition: education x era OR,1.14,p = .46 (n.s.)
+Precedence (elite leads public),lag-10 r = .92,Granger beta = .72, p = .063
+Capstone: partisan gap on the fact,-0.03 -> +0.33,trend r = .92, p = .03
+Fact converges on preference,9% -> 72%,levels convergence 2004-2024
+Party x knowledge (mechanism),+0.51,p < .001
+... net of education + ideology,+0.48,p < .001
+Sophistication amplifies only at high T,immigration + / automation null / AI -,scope/falsification
+Fact -> Trump vote (net of party),OR 7.56,p < .001

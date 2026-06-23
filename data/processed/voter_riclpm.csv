@@ -1,0 +1,7 @@
+parameter,estimate,se,p,note
+within: party_t -> belief_t+1 (CL_p2b),0.403,0.039,<.001,"cross-lag, constrained equal across waves"
+within: belief_t -> party_t+1 (CL_b2p),0.120,0.016,<.001,"cross-lag, constrained equal across waves"
+within: belief stability (AR_b),0.231,0.025,<.001,autoregressive
+within: party stability (AR_p),0.828,0.024,<.001,autoregressive
+path difference (party-leads minus belief-leads),0.283,,<.001,"bootstrap 95% CI [0.189, 0.379]; 300/300 resamples > 0"
+N (complete four-wave respondents),2008,,,full-participation panel; RMSEA=0.067

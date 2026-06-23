@@ -1,0 +1,5 @@
+model,party_knowledge_logodds,p_value,n
+baseline,0.526,5e-06,4402
++ party x racial resentment,0.455,7.4e-05,4385
++ party x authoritarianism,0.405,0.00095,4277
++ party x resentment + authoritarianism,0.381,0.0014,4271

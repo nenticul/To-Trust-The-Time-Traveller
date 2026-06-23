@@ -1,0 +1,44 @@
+# --- Restricted raw data (DO NOT COMMIT — see data/README.md) ---
+data/raw/gss/*
+data/raw/pew/*
+data/raw/anes/*
+data/raw/speeches/*
+!data/raw/gss/.gitkeep
+!data/raw/pew/.gitkeep
+!data/raw/anes/.gitkeep
+!data/raw/speeches/.gitkeep
+
+# --- renv library (the lockfile IS committed; the library is not) ---
+renv/library/
+renv/staging/
+renv/python/
+renv/sandbox/
+
+# --- regenerable outputs ---
+output/figures/*
+output/tables/*
+!output/figures/.gitkeep
+!output/tables/.gitkeep
+
+# --- R / system cruft ---
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+.DS_Store
+**/.ipynb_checkpoints/
+__pycache__/
+"paper/*.pdf" 
+"paper/*_files/" 
+paper/time_traveller.tex
+paper/time_traveller.pdf
+paper/time_traveller_files/
+
+data/raw/voter/*
+!data/raw/voter/.gitkeep
+
+# Local downloaded raw data (not for repo)
+New_Data/
+
+data/raw/issp/*
+!data/raw/issp/.gitkeep
